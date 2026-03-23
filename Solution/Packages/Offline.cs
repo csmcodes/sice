@@ -129,6 +129,62 @@ namespace Packages
 
         }
 
+        public static void SendComprobanteSync(Comprobante comprobante)
+        {
+            SingComprobante(comprobante);
+            string path = Constantes.GetParameter("pathfiles");
+            string pathxml = path + "\\temp\\" + comprobante.com_numero + "_" + comprobante.com_empresa + ".xml";
+
+            byte[] buff = null;
+            FileStream fs = new FileStream(pathxml, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            long numBytes = new FileInfo(pathxml).Length;
+            buff = br.ReadBytes((int)numBytes);
+            br.Close();
+            br.Dispose();
+            fs.Close();
+            fs.Dispose();
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            object[] result = null;
+            if (comprobante.com_ambiente == (int)Enums.Ambiente.PRUEBAS)
+            {
+                RecepcionComprobantesPruebas.RecepcionComprobantesOfflineService svc = new RecepcionComprobantesPruebas.RecepcionComprobantesOfflineService();
+                result = svc.validarComprobante(buff);
+            }
+            else if (comprobante.com_ambiente == (int)Enums.Ambiente.PRODUCCIÓN)
+            {
+                RecepcionComprobantesProduccion.RecepcionComprobantesOfflineService svc = new RecepcionComprobantesProduccion.RecepcionComprobantesOfflineService();
+                result = svc.validarComprobante(buff);
+            }
+
+            if (result != null && result.Length > 0)
+                ValidarComprobante((Array)result[0], comprobante.com_numero, comprobante.com_empresa, sync: true);
+        }
+
+        public static void VerifyComprobanteSync(Comprobante comprobante)
+        {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            object[] result = null;
+            if (comprobante.com_ambiente == (int)Enums.Ambiente.PRUEBAS)
+            {
+                AutorizacionComprobantesPruebas.AutorizacionComprobantesOfflineService svc = new AutorizacionComprobantesPruebas.AutorizacionComprobantesOfflineService();
+                result = svc.autorizacionComprobante(comprobante.com_numero);
+            }
+            else if (comprobante.com_ambiente == (int)Enums.Ambiente.PRODUCCIÓN)
+            {
+                AutorizacionComprobantesProduccion.AutorizacionComprobantesOfflineService svc = new AutorizacionComprobantesProduccion.AutorizacionComprobantesOfflineService();
+                result = svc.autorizacionComprobante(comprobante.com_numero);
+            }
+
+            if (result != null && result.Length > 0)
+                AutorizacionComprobante((Array)result[0], comprobante.com_numero, comprobante.com_empresa);
+        }
+
         static void Produccion_validarComprobanteCompleted(object sender, RecepcionComprobantesProduccion.validarComprobanteCompletedEventArgs e)
         {
             try
@@ -157,7 +213,7 @@ namespace Packages
             }
         }
 
-        public static void ValidarComprobante(Array a, string clave, int empresa)
+        public static void ValidarComprobante(Array a, string clave, int empresa, bool sync = false)
         {
             XmlNode[] nodos = (XmlNode[])a.GetValue(0);
 
@@ -195,7 +251,10 @@ namespace Packages
                 if (comprobante.com_estado == (int)Enums.EstadoComprobante.RECIBIDO)
                 {
                     CorreoComprobanteAsync(comprobante, comprobante.crea_usr, true);
-                    VerifyComprobanteAsync(comprobante);
+                    if (sync)
+                        VerifyComprobanteSync(comprobante);
+                    else
+                        VerifyComprobanteAsync(comprobante);
                 }
 
                 //Services.Pdf.SavePDF(comprobante.com_empresa, comprobante.com_numero, HttpContext.Current.Server.MapPath("../pdf"), false, "");

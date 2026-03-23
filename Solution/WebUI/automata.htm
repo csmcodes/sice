@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Monitor Autómata SRI</title>
+    <script src="scripts/jquery.js" type="text/javascript"></script>
+    <script src="scripts/jquery-ui.js" type="text/javascript"></script>
+    <script src="scripts/server.js" type="text/javascript"></script>
+    <script src="scripts/forms/automata.js" type="text/javascript"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #333; }
+        .filters { margin-bottom: 15px; }
+        .filters label { margin-right: 8px; }
+        .table { border-collapse: collapse; width: 100%; }
+        .table th, .table td { border: 1px solid #ccc; padding: 6px 10px; font-size: 13px; }
+        .table thead { background: #f5f5f5; }
+        .danger td { background: #fdd; }
+        .warning td { background: #ffd; }
+        #logs { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h2>Monitor Autómata SRI</h2>
+    <div class="filters">
+        <label>Empresa:</label>
+        <select id="cmbempresa"></select>
+        &nbsp;
+        <input type="button" value="Actualizar" onclick="LoadAutomataData()" />
+    </div>
+    <div id="content"></div>
+    <div id="logs"></div>
+</body>
+</html>

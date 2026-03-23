@@ -1968,6 +1968,98 @@ namespace WebUI.ws
 
         #endregion
 
+        #region Automata SRI
+
+        [WebMethod]
+        public string GetAutomataData(object objeto)
+        {
+            try
+            {
+                Dictionary<string, object> tmp = (Dictionary<string, object>)objeto;
+                object empObj = null;
+                tmp.TryGetValue("empresa", out empObj);
+                int empresa = 0;
+                int.TryParse(empObj != null ? empObj.ToString() : "0", out empresa);
+
+                WhereParams where = empresa > 0
+                    ? new WhereParams("ae_empresa = {0}", empresa)
+                    : new WhereParams("1=1");
+
+                List<AutomataEjecucion> lista = AutomataEjecucionBLL.GetAllTop(where, "ae_fecha_inicio DESC", 20);
+
+                StringBuilder html = new StringBuilder();
+                html.AppendLine("<table class='table table-bordered table-sm' id='tblAutomata'>");
+                html.AppendLine("<thead><tr>");
+                html.AppendLine("<th>Empresa</th><th>Inicio</th><th>Fin</th><th>Procesados</th><th>Autorizados</th><th>Alertas</th><th>Modo</th><th>Logs</th>");
+                html.AppendLine("</tr></thead><tbody>");
+
+                foreach (AutomataEjecucion ej in lista)
+                {
+                    string modo = (ej.ae_simulacion ?? false) ? "<span style='color:orange'>SIM</span>" : "<span style='color:green'>REAL</span>";
+                    string fin = ej.ae_fecha_fin.HasValue ? ej.ae_fecha_fin.Value.ToString("dd/MM HH:mm:ss") : "...";
+                    html.AppendFormat("<tr>");
+                    html.AppendFormat("<td>{0}</td>", ej.ae_empresa);
+                    html.AppendFormat("<td>{0}</td>", ej.ae_fecha_inicio.ToString("dd/MM HH:mm:ss"));
+                    html.AppendFormat("<td>{0}</td>", fin);
+                    html.AppendFormat("<td>{0}</td>", ej.ae_procesados ?? 0);
+                    html.AppendFormat("<td style='color:green'>{0}</td>", ej.ae_autorizados ?? 0);
+                    html.AppendFormat("<td style='color:{1}'>{0}</td>", ej.ae_alertas ?? 0, (ej.ae_alertas ?? 0) > 0 ? "red" : "inherit");
+                    html.AppendFormat("<td>{0}</td>", modo);
+                    html.AppendFormat("<td><a href='#' onclick='GetAutomataLogs({0});return false;'>Ver</a></td>", ej.ae_id);
+                    html.AppendLine("</tr>");
+                }
+
+                html.AppendLine("</tbody></table>");
+                return html.ToString();
+            }
+            catch (Exception ex)
+            {
+                return "<p style='color:red'>Error: " + ex.Message + "</p>";
+            }
+        }
+
+        [WebMethod]
+        public string GetAutomataLogs(object objeto)
+        {
+            try
+            {
+                Dictionary<string, object> tmp = (Dictionary<string, object>)objeto;
+                object ejObj = null;
+                tmp.TryGetValue("ejecucion", out ejObj);
+                int ejecucion = int.Parse(ejObj.ToString());
+
+                List<AutomataLog> logs = AutomataLogBLL.GetAll(
+                    new WhereParams("al_ejecucion = {0}", ejecucion), "al_fecha ASC");
+
+                StringBuilder html = new StringBuilder();
+                html.AppendFormat("<h5>Logs ejecución #{0}</h5>", ejecucion);
+                html.AppendLine("<table class='table table-bordered table-sm'>");
+                html.AppendLine("<thead><tr><th>Hora</th><th>Número</th><th>Acción</th><th>Resultado</th><th>Mensaje</th></tr></thead><tbody>");
+
+                foreach (AutomataLog log in logs)
+                {
+                    string color = log.al_resultado == "OK" ? "" : log.al_resultado == "ERROR" ? "danger" : "warning";
+                    html.AppendFormat("<tr class='{0}'>", color);
+                    html.AppendFormat("<td>{0}</td>", log.al_fecha.ToString("HH:mm:ss"));
+                    html.AppendFormat("<td>{0}</td>", log.al_numero_legible ?? log.al_numero);
+                    html.AppendFormat("<td>{0}</td>", log.al_accion);
+                    html.AppendFormat("<td>{0}</td>", log.al_resultado);
+                    html.AppendFormat("<td style='max-width:300px;word-wrap:break-word'>{0}</td>", HttpUtility.HtmlEncode(log.al_mensaje ?? ""));
+                    html.AppendLine("</tr>");
+                }
+
+                html.AppendLine("</tbody></table>");
+                return html.ToString();
+            }
+            catch (Exception ex)
+            {
+                return "<p style='color:red'>Error: " + ex.Message + "</p>";
+            }
+        }
+
+        #endregion
+
+
         [WebMethod]
         public string SendPrueba(object objeto)
         {

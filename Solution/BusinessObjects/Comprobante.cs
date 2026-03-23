@@ -53,6 +53,9 @@ namespace BusinessObjects
 	public String mod_usr { get; set; }
 	public DateTime? mod_fecha { get; set; }
 
+        public Int32? com_reintentos { get; set; }
+        public DateTime? com_fechaultimointento { get; set; }
+
 
         [Data(nosql = true, tablaref = "empresa", camporef = "emp_estado", foreign = "com_empresa", keyref = "emp_codigo", join = "left")]
         public Int32? com_estadoempresa { get; set; }
@@ -252,6 +255,8 @@ namespace BusinessObjects
 	this.crea_fecha = (reader["crea_fecha"] != DBNull.Value) ? (DateTime?)reader["crea_fecha"] : null;
 	this.mod_usr = reader["mod_usr"].ToString();
 	this.mod_fecha = (reader["mod_fecha"] != DBNull.Value) ? (DateTime?)reader["mod_fecha"] : null;
+        this.com_reintentos = (reader["com_reintentos"] != DBNull.Value) ? (Int32?)reader["com_reintentos"] : null;
+        this.com_fechaultimointento = (reader["com_fechaultimointento"] != DBNull.Value) ? (DateTime?)reader["com_fechaultimointento"] : null;
 
             this.com_estadoempresa = (reader["com_estadoempresa"] != DBNull.Value) ? (Int32?)reader["com_estadoempresa"] : null;
         }
@@ -368,6 +373,13 @@ namespace BusinessObjects
 	this.crea_fecha = (DateTime?)Conversiones.GetValueByType(crea_fecha, typeof(DateTime?));
 	this.mod_usr = (String)Conversiones.GetValueByType(mod_usr, typeof(String));
 	this.mod_fecha = (DateTime?)Conversiones.GetValueByType(mod_fecha, typeof(DateTime?));
+
+                object com_reintentos = null;
+                object com_fechaultimointento = null;
+                tmp.TryGetValue("com_reintentos", out com_reintentos);
+                tmp.TryGetValue("com_fechaultimointento", out com_fechaultimointento);
+                this.com_reintentos = (Int32?)Conversiones.GetValueByType(com_reintentos, typeof(Int32?));
+                this.com_fechaultimointento = (DateTime?)Conversiones.GetValueByType(com_fechaultimointento, typeof(DateTime?));
 
             }
         }
