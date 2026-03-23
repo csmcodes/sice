@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SetClave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objeto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetClaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetClaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificarComprobantes">
+        <s:complexType />
+      </s:element>
+      <s:element name="VerificarComprobantesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerificarComprobantesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecibirComprobante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecibirComprobanteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecibirComprobanteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarComprobante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objeto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarComprobanteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnviarComprobanteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetComprobante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objeto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetComprobanteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResetComprobanteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificarComprobante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificarComprobanteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerificarComprobanteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRespuesta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRespuestaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRespuestaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadComprobante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadComprobanteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadComprobanteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadComprobantes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objeto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadComprobantesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadComprobantesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveEmpresa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objeto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveEmpresaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveEmpresaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SetClaveSoapIn">
+    <wsdl:part name="parameters" element="tns:SetClave" />
+  </wsdl:message>
+  <wsdl:message name="SetClaveSoapOut">
+    <wsdl:part name="parameters" element="tns:SetClaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerificarComprobantesSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificarComprobantes" />
+  </wsdl:message>
+  <wsdl:message name="VerificarComprobantesSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificarComprobantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecibirComprobanteSoapIn">
+    <wsdl:part name="parameters" element="tns:RecibirComprobante" />
+  </wsdl:message>
+  <wsdl:message name="RecibirComprobanteSoapOut">
+    <wsdl:part name="parameters" element="tns:RecibirComprobanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviarComprobanteSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarComprobante" />
+  </wsdl:message>
+  <wsdl:message name="EnviarComprobanteSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarComprobanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResetComprobanteSoapIn">
+    <wsdl:part name="parameters" element="tns:ResetComprobante" />
+  </wsdl:message>
+  <wsdl:message name="ResetComprobanteSoapOut">
+    <wsdl:part name="parameters" element="tns:ResetComprobanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerificarComprobanteSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificarComprobante" />
+  </wsdl:message>
+  <wsdl:message name="VerificarComprobanteSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificarComprobanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRespuestaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRespuesta" />
+  </wsdl:message>
+  <wsdl:message name="GetRespuestaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRespuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadComprobanteSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadComprobante" />
+  </wsdl:message>
+  <wsdl:message name="UploadComprobanteSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadComprobanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadComprobantesSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadComprobantes" />
+  </wsdl:message>
+  <wsdl:message name="LoadComprobantesSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadComprobantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveEmpresaSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="SaveEmpresaSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MetodosSoap">
+    <wsdl:operation name="SetClave">
+      <wsdl:input message="tns:SetClaveSoapIn" />
+      <wsdl:output message="tns:SetClaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificarComprobantes">
+      <wsdl:input message="tns:VerificarComprobantesSoapIn" />
+      <wsdl:output message="tns:VerificarComprobantesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecibirComprobante">
+      <wsdl:input message="tns:RecibirComprobanteSoapIn" />
+      <wsdl:output message="tns:RecibirComprobanteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarComprobante">
+      <wsdl:input message="tns:EnviarComprobanteSoapIn" />
+      <wsdl:output message="tns:EnviarComprobanteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetComprobante">
+      <wsdl:input message="tns:ResetComprobanteSoapIn" />
+      <wsdl:output message="tns:ResetComprobanteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificarComprobante">
+      <wsdl:input message="tns:VerificarComprobanteSoapIn" />
+      <wsdl:output message="tns:VerificarComprobanteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRespuesta">
+      <wsdl:input message="tns:GetRespuestaSoapIn" />
+      <wsdl:output message="tns:GetRespuestaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadComprobante">
+      <wsdl:input message="tns:UploadComprobanteSoapIn" />
+      <wsdl:output message="tns:UploadComprobanteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadComprobantes">
+      <wsdl:input message="tns:LoadComprobantesSoapIn" />
+      <wsdl:output message="tns:LoadComprobantesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveEmpresa">
+      <wsdl:input message="tns:SaveEmpresaSoapIn" />
+      <wsdl:output message="tns:SaveEmpresaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MetodosSoap" type="tns:MetodosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetClave">
+      <soap:operation soapAction="http://tempuri.org/SetClave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarComprobantes">
+      <soap:operation soapAction="http://tempuri.org/VerificarComprobantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecibirComprobante">
+      <soap:operation soapAction="http://tempuri.org/RecibirComprobante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarComprobante">
+      <soap:operation soapAction="http://tempuri.org/EnviarComprobante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetComprobante">
+      <soap:operation soapAction="http://tempuri.org/ResetComprobante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarComprobante">
+      <soap:operation soapAction="http://tempuri.org/VerificarComprobante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRespuesta">
+      <soap:operation soapAction="http://tempuri.org/GetRespuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadComprobante">
+      <soap:operation soapAction="http://tempuri.org/UploadComprobante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadComprobantes">
+      <soap:operation soapAction="http://tempuri.org/LoadComprobantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveEmpresa">
+      <soap:operation soapAction="http://tempuri.org/SaveEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MetodosSoap12" type="tns:MetodosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetClave">
+      <soap12:operation soapAction="http://tempuri.org/SetClave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarComprobantes">
+      <soap12:operation soapAction="http://tempuri.org/VerificarComprobantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecibirComprobante">
+      <soap12:operation soapAction="http://tempuri.org/RecibirComprobante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarComprobante">
+      <soap12:operation soapAction="http://tempuri.org/EnviarComprobante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetComprobante">
+      <soap12:operation soapAction="http://tempuri.org/ResetComprobante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarComprobante">
+      <soap12:operation soapAction="http://tempuri.org/VerificarComprobante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRespuesta">
+      <soap12:operation soapAction="http://tempuri.org/GetRespuesta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadComprobante">
+      <soap12:operation soapAction="http://tempuri.org/UploadComprobante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadComprobantes">
+      <soap12:operation soapAction="http://tempuri.org/LoadComprobantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/SaveEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Metodos">
+    <wsdl:port name="MetodosSoap" binding="tns:MetodosSoap">
+      <soap:address location="http://localhost:49413/ws/Metodos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MetodosSoap12" binding="tns:MetodosSoap12">
+      <soap12:address location="http://localhost:49413/ws/Metodos.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

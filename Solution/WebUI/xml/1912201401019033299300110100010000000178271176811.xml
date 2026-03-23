@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<autorizacion><estado>AUTORIZADO</estado><numeroAutorizacion>1912201417244201903329930010177094412</numeroAutorizacion><fechaAutorizacion>2014-12-19T17:24:42.183-05:00</fechaAutorizacion><ambiente>PRUEBAS</ambiente><comprobante>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;factura id="comprobante" version="1.0.0"&gt;&lt;infoTributaria&gt;&lt;ambiente&gt;1&lt;/ambiente&gt;&lt;tipoEmision&gt;1&lt;/tipoEmision&gt;&lt;razonSocial&gt;KARNATAKA S.A.&lt;/razonSocial&gt;&lt;ruc&gt;0190332993001&lt;/ruc&gt;&lt;claveAcceso&gt;1912201401019033299300110100010000000178271176811&lt;/claveAcceso&gt;&lt;codDoc&gt;01&lt;/codDoc&gt;&lt;estab&gt;010&lt;/estab&gt;&lt;ptoEmi&gt;001&lt;/ptoEmi&gt;&lt;secuencial&gt;000000017&lt;/secuencial&gt;&lt;dirMatriz&gt;AV. ESPANA  NUNEZ DE BONILLA&lt;/dirMatriz&gt;&lt;/infoTributaria&gt;&lt;infoFactura&gt;&lt;fechaEmision&gt;19/12/2014&lt;/fechaEmision&gt;&lt;contribuyenteEspecial&gt;263&lt;/contribuyenteEspecial&gt;&lt;obligadoContabilidad&gt;SI&lt;/obligadoContabilidad&gt;&lt;tipoIdentificacionComprador&gt;05&lt;/tipoIdentificacionComprador&gt;&lt;razonSocialComprador&gt;OSWALDO PASQUEL&lt;/razonSocialComprador&gt;&lt;identificacionComprador&gt;1705965539&lt;/identificacionComprador&gt;&lt;totalSinImpuestos&gt;94.47&lt;/totalSinImpuestos&gt;&lt;totalDescuento&gt;8.21&lt;/totalDescuento&gt;&lt;totalConImpuestos&gt;&lt;totalImpuesto&gt;&lt;codigo&gt;2&lt;/codigo&gt;&lt;codigoPorcentaje&gt;2&lt;/codigoPorcentaje&gt;&lt;baseImponible&gt;94.47&lt;/baseImponible&gt;&lt;valor&gt;11.34&lt;/valor&gt;&lt;/totalImpuesto&gt;&lt;/totalConImpuestos&gt;&lt;propina&gt;0.00&lt;/propina&gt;&lt;importeTotal&gt;105.81&lt;/importeTotal&gt;&lt;moneda&gt;DOLAR&lt;/moneda&gt;&lt;/infoFactura&gt;&lt;detalles&gt;&lt;detalle&gt;&lt;codigoPrincipal&gt;11002  L&lt;/codigoPrincipal&gt;&lt;descripcion&gt;LICRA BIB SHORT Teamline 2012 L&lt;/descripcion&gt;&lt;cantidad&gt;1.00&lt;/cantidad&gt;&lt;precioUnitario&gt;102.68&lt;/precioUnitario&gt;&lt;descuento&gt;8.21&lt;/descuento&gt;&lt;precioTotalSinImpuesto&gt;94.47&lt;/precioTotalSinImpuesto&gt;&lt;impuestos&gt;&lt;impuesto&gt;&lt;codigo&gt;2&lt;/codigo&gt;&lt;codigoPorcentaje&gt;2&lt;/codigoPorcentaje&gt;&lt;tarifa&gt;12&lt;/tarifa&gt;&lt;baseImponible&gt;94.47&lt;/baseImponible&gt;&lt;valor&gt;11.34&lt;/valor&gt;&lt;/impuesto&gt;&lt;/impuestos&gt;&lt;/detalle&gt;&lt;/detalles&gt;&lt;ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature224954"&gt;
+&lt;ds:SignedInfo Id="Signature-SignedInfo50490"&gt;
+&lt;ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"&gt;&lt;/ds:CanonicalizationMethod&gt;
+&lt;ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"&gt;&lt;/ds:SignatureMethod&gt;
+&lt;ds:Reference Id="SignedPropertiesID499819" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature224954-SignedProperties654378"&gt;
+&lt;ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"&gt;&lt;/ds:DigestMethod&gt;
+&lt;ds:DigestValue&gt;A14dAYnMpF4pXmNvL50c6eEJJqU=&lt;/ds:DigestValue&gt;
+&lt;/ds:Reference&gt;
+&lt;ds:Reference URI="#Certificate1300764"&gt;
+&lt;ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"&gt;&lt;/ds:DigestMethod&gt;
+&lt;ds:DigestValue&gt;1pXJq8VgnxyQvZP5jSoA2Q1yDfc=&lt;/ds:DigestValue&gt;
+&lt;/ds:Reference&gt;
+&lt;ds:Reference Id="Reference-ID-31254" URI="#comprobante"&gt;
+&lt;ds:Transforms&gt;
+&lt;ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"&gt;&lt;/ds:Transform&gt;
+&lt;/ds:Transforms&gt;
+&lt;ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"&gt;&lt;/ds:DigestMethod&gt;
+&lt;ds:DigestValue&gt;rYS6FFlrRu8mpI0GAcHv75ucySw=&lt;/ds:DigestValue&gt;
+&lt;/ds:Reference&gt;
+&lt;/ds:SignedInfo&gt;
+&lt;ds:SignatureValue Id="SignatureValue289939"&gt;
+hkfVfoQBLpnn7U8GBjnB7ztr7xAPHv8rE6pixDyKO9TTGFUT4n5GO1NJNJnLiH6uuaIxArNtK1rV
+J97fDlB2Ne2zxAMxutlVlSdXbtSPfXM7cshxfJOq6ez12gq/aSe0Kn9NsWRIbrboH3ewrCxGPh8f
+YfQo5ZvWCDxfxiCW9b5miqPPyYTIOPKv/yGuI99Eos9m/Xu3ZmIZyI6PoN46QvqdlCsZMPpXwOZ4
+sYsuhwi6Kszi+tytzn/2swKaEiqzfmXnmPCbh2jxiXqD4slN765AwBBUcEcSNuBRAyRsdPRQ5C4v
+P2BueqNfRG+9JZ9pqbP0o49tNIf6KUiKRjtmkQ==
+&lt;/ds:SignatureValue&gt;
+&lt;ds:KeyInfo Id="Certificate1300764"&gt;
+&lt;ds:X509Data&gt;
+&lt;ds:X509Certificate&gt;
+MIIJWzCCB0OgAwIBAgIETkPBgDANBgkqhkiG9w0BAQsFADCBoTELMAkGA1UEBhMCRUMxIjAgBgNV
+BAoTGUJBTkNPIENFTlRSQUwgREVMIEVDVUFET1IxNzA1BgNVBAsTLkVOVElEQUQgREUgQ0VSVElG
+SUNBQ0lPTiBERSBJTkZPUk1BQ0lPTi1FQ0lCQ0UxDjAMBgNVBAcTBVFVSVRPMSUwIwYDVQQDExxB
+QyBCQU5DTyBDRU5UUkFMIERFTCBFQ1VBRE9SMB4XDTE0MTIxNTE2MjU1NFoXDTE1MTIxNTE2NTU1
+NFowgbUxCzAJBgNVBAYTAkVDMSIwIAYDVQQKExlCQU5DTyBDRU5UUkFMIERFTCBFQ1VBRE9SMTcw
+NQYDVQQLEy5FTlRJREFEIERFIENFUlRJRklDQUNJT04gREUgSU5GT1JNQUNJT04tRUNJQkNFMQ4w
+DAYDVQQHEwVRVUlUTzE5MBEGA1UEBRMKMDAwMDA5NjkxMjAkBgNVBAMTHUdMRU5EQSBNQUdBTEkg
+QVJNSUpPUyBGQUpBUkRPMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmMq4BA+v5Vpq
+Dc0meOYXbVx2oTs8zCXpk7bzeMhJJuoB2bfOE5zHc3QF3Y0qK/8sfshz55P85wSBb/uGoUG/xZ52
+peFGjNMTRpaSedRwRVmPjLFWHoVrJGDyRmIn+IIutJIfS3XxZHho4OnJHVFJt5cgo7fC7h2VE6+n
+yTgt+jiiCKJkDsYfMXTbYBCjSDJ3PIL/3BOZk0gI0Voy3+bbDOKLfjfQzU44iOhmmfJgXSR8DCxq
+Wg0wK8+TxSK3S8IhzophenzAzL0nShzfbIISYf3cWmGgTGDkR742iXUJnrXpmqEtLtdOMeWE7GO6
+ZJfK6E7jEP7Bee1n96fosrCo1wIDAQABo4IEgzCCBH8wCwYDVR0PBAQDAgUgMIGRBggrBgEFBQcB
+AQSBhDCBgTA+BggrBgEFBQcwAYYyaHR0cDovL29jc3AuZWNpLmJjZS5lYy9lamJjYS9wdWJsaWN3
+ZWIvc3RhdHVzL29jc3AwPwYIKwYBBQUHMAGGM2h0dHA6Ly9vY3NwMS5lY2kuYmNlLmVjL2VqYmNh
+L3B1YmxpY3dlYi9zdGF0dXMvb2NzcDAcBgorBgEEAYKoOwMKBA4TDEtBUk5BVEFLQSBTQTAdBgor
+BgEEAYKoOwMLBA8TDTAxOTAzMzI5OTMwMDEwGgYKKwYBBAGCqDsDAQQMEwoxNzIxMjgyOTY4MB0G
+CisGAQQBgqg7AwIEDxMNR0xFTkRBIE1BR0FMSTAXBgorBgEEAYKoOwMDBAkTB0FSTUlKT1MwFwYK
+KwYBBAGCqDsDBAQJEwdGQUpBUkRPMCMGCisGAQQBgqg7AwUEFRMTQVNJU1RFTlRFIERFIFZFTlRB
+UzAwBgorBgEEAYKoOwMHBCITIEFWIEVTUEFOQSAyODggWSBOVU5FWiBERSBCT05JTExBMBkGCisG
+AQQBgqg7AwgECxMJMDcyODYzNTI3MBYGCisGAQQBgqg7AwkECBMGQ3VlbmNhMBcGCisGAQQBgqg7
+AwwECRMHRUNVQURPUjAgBgorBgEEAYKoOwMzBBITEFNPRlRXQVJFLUFSQ0hJVk8wJAYDVR0RBB0w
+G4EZbWFnYWx5YXJAa2FybmF0YWthLmNvbS5lYzCCAd8GA1UdHwSCAdYwggHSMIIBzqCCAcqgggHG
+hoHVbGRhcDovL2JjZXFsZGFwc3VicDEuYmNlLmVjL2NuPUNSTDE4Myxjbj1BQyUyMEJBTkNPJTIw
+Q0VOVFJBTCUyMERFTCUyMEVDVUFET1IsbD1RVUlUTyxvdT1FTlRJREFEJTIwREUlMjBDRVJUSUZJ
+Q0FDSU9OJTIwREUlMjBJTkZPUk1BQ0lPTi1FQ0lCQ0Usbz1CQU5DTyUyMENFTlRSQUwlMjBERUwl
+MjBFQ1VBRE9SLGM9RUM/Y2VydGlmaWNhdGVSZXZvY2F0aW9uTGlzdD9iYXNlhjRodHRwOi8vd3d3
+LmVjaS5iY2UuZWMvQ1JML2VjaV9iY2VfZWNfY3JsZmlsZWNvbWIuY3JspIG1MIGyMQswCQYDVQQG
+EwJFQzEiMCAGA1UEChMZQkFOQ08gQ0VOVFJBTCBERUwgRUNVQURPUjE3MDUGA1UECxMuRU5USURB
+RCBERSBDRVJUSUZJQ0FDSU9OIERFIElORk9STUFDSU9OLUVDSUJDRTEOMAwGA1UEBxMFUVVJVE8x
+JTAjBgNVBAMTHEFDIEJBTkNPIENFTlRSQUwgREVMIEVDVUFET1IxDzANBgNVBAMTBkNSTDE4MzAf
+BgNVHSMEGDAWgBQY+fD75jIcmWY5KsqLsml9SSe/zjAdBgNVHQ4EFgQUF4WW/NrbpNBsc+/eAp4M
+42pLaLIwCQYDVR0TBAIwADAZBgkqhkiG9n0HQQAEDDAKGwRWOC4xAwIEsDANBgkqhkiG9w0BAQsF
+AAOCAgEASbkUJGpXQ0d32U2hxoM2lAii/Wgm6IpxYZLYH327AYV5vcKWccB3mPwrOtEQyfLd4pdT
+7KMEh7jt21i/U7kAjK5cy4a4k/V7v10nbCmePP8wzAG/boAJDSaerGJ2uxVsFVbpwiguIvI9Nw4Y
+jsnmGk0Tcxbg8y4brOVeFHWwb3LxYcVgw9TFvRugu7Hmt1tNet2toidvtuNhnf9+VeNRojvZnSuu
+MpP3YkINB3sl0aPdKaYbszC7ghcMu+bHppQyHJBAnuMPzagP+++ZqS67f6QG6EphX6E2fUUDeueH
+GDVFXMfwz7I5MYk8DM7b69azx+sc0QtO8nNpdTJG+Sf+TGSJw4O6s68ScFWJlHyUL0DcysbLpiG4
+BTwcFNS/F/qAkIYim+UYzKtWeE4O1fnX9JOsqFY4A4W/bB8bUCge8hoPOmXYYQ3lUgiCA0yjOeHt
+/cG/zBXHgU79LaFrqFnxpitQBnAbgfondKrHl/xehNYYfRFtXHwPgv01l+gKunx1gZBon+abObPy
++bkMuGnmyC1vXHeVy+ZxU8nQDCZOZrqRvo80kF2rEFskT4GJAaSG5k/b/Y18WNg1fd7/LhyvkTQD
+cXKggJI5TUYGbAzxpskzB2Frgc6vPAWZBY3vu9s5mJ/V7Yp7qfJObEQa7vrQMyGcx+YZJDXUFiIu
+i8x107I=
+&lt;/ds:X509Certificate&gt;
+&lt;/ds:X509Data&gt;
+&lt;ds:KeyValue&gt;
+&lt;ds:RSAKeyValue&gt;
+&lt;ds:Modulus&gt;
+mMq4BA+v5VpqDc0meOYXbVx2oTs8zCXpk7bzeMhJJuoB2bfOE5zHc3QF3Y0qK/8sfshz55P85wSB
+b/uGoUG/xZ52peFGjNMTRpaSedRwRVmPjLFWHoVrJGDyRmIn+IIutJIfS3XxZHho4OnJHVFJt5cg
+o7fC7h2VE6+nyTgt+jiiCKJkDsYfMXTbYBCjSDJ3PIL/3BOZk0gI0Voy3+bbDOKLfjfQzU44iOhm
+mfJgXSR8DCxqWg0wK8+TxSK3S8IhzophenzAzL0nShzfbIISYf3cWmGgTGDkR742iXUJnrXpmqEt
+LtdOMeWE7GO6ZJfK6E7jEP7Bee1n96fosrCo1w==
+&lt;/ds:Modulus&gt;
+&lt;ds:Exponent&gt;AQAB&lt;/ds:Exponent&gt;
+&lt;/ds:RSAKeyValue&gt;
+&lt;/ds:KeyValue&gt;
+&lt;/ds:KeyInfo&gt;
+&lt;ds:Object Id="Signature224954-Object707192"&gt;&lt;etsi:QualifyingProperties Target="#Signature224954"&gt;&lt;etsi:SignedProperties Id="Signature224954-SignedProperties654378"&gt;&lt;etsi:SignedSignatureProperties&gt;&lt;etsi:SigningTime&gt;2014-12-19T17:23:38-05:00&lt;/etsi:SigningTime&gt;&lt;etsi:SigningCertificate&gt;&lt;etsi:Cert&gt;&lt;etsi:CertDigest&gt;&lt;ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"&gt;&lt;/ds:DigestMethod&gt;&lt;ds:DigestValue&gt;GsmwB1DjjzOKspjWyfSZatbDx1Y=&lt;/ds:DigestValue&gt;&lt;/etsi:CertDigest&gt;&lt;etsi:IssuerSerial&gt;&lt;ds:X509IssuerName&gt;CN=AC BANCO CENTRAL DEL ECUADOR,L=QUITO,OU=ENTIDAD DE CERTIFICACION DE INFORMACION-ECIBCE,O=BANCO CENTRAL DEL ECUADOR,C=EC&lt;/ds:X509IssuerName&gt;&lt;ds:X509SerialNumber&gt;1313063296&lt;/ds:X509SerialNumber&gt;&lt;/etsi:IssuerSerial&gt;&lt;/etsi:Cert&gt;&lt;/etsi:SigningCertificate&gt;&lt;etsi:SignaturePolicyIdentifier&gt;&lt;etsi:SignaturePolicyId&gt;&lt;etsi:SigPolicyId&gt;&lt;etsi:Identifier&gt;http://www.facturae.es/politica_de_firma_formato_facturae/politica_de_firma_formato_facturae_v3_1.pdf&lt;/etsi:Identifier&gt;&lt;etsi:Description&gt;Política de Firma FacturaE v3.1&lt;/etsi:Description&gt;&lt;/etsi:SigPolicyId&gt;&lt;etsi:SigPolicyHash&gt;&lt;ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"&gt;&lt;/ds:DigestMethod&gt;&lt;ds:DigestValue&gt;Ohixl6upD6av8N7pEvDABhEL6hM=&lt;/ds:DigestValue&gt;&lt;/etsi:SigPolicyHash&gt;&lt;/etsi:SignaturePolicyId&gt;&lt;/etsi:SignaturePolicyIdentifier&gt;&lt;etsi:SignerRole&gt;&lt;etsi:ClaimedRoles&gt;&lt;etsi:ClaimedRole&gt;Rol de firma&lt;/etsi:ClaimedRole&gt;&lt;/etsi:ClaimedRoles&gt;&lt;/etsi:SignerRole&gt;&lt;/etsi:SignedSignatureProperties&gt;&lt;etsi:SignedDataObjectProperties&gt;&lt;etsi:DataObjectFormat ObjectReference="#Reference-ID-31254"&gt;&lt;etsi:Description&gt;Documento de ejemplo&lt;/etsi:Description&gt;&lt;etsi:MimeType&gt;text/xml&lt;/etsi:MimeType&gt;&lt;/etsi:DataObjectFormat&gt;&lt;/etsi:SignedDataObjectProperties&gt;&lt;/etsi:SignedProperties&gt;&lt;/etsi:QualifyingProperties&gt;&lt;/ds:Object&gt;&lt;/ds:Signature&gt;&lt;/factura&gt;</comprobante><mensajes><mensaje><identificador>60</identificador><mensaje>ESTE PROCESO FUE REALIZADO EN EL AMBIENTE DE PRUEBAS</mensaje><tipo>INFORMATIVO</tipo></mensaje></mensajes></autorizacion>

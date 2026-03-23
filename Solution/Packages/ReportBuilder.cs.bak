@@ -1,0 +1,450 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Microsoft.Reporting.WebForms;
+using System.Data; 
+
+namespace Packages
+{
+    public class ReportBuilder
+    {
+        protected static string reportfolder = "reports/";
+
+        public static void BuildReport(ref ReportViewer reportviewer, string reportcode, params object[] parameters)
+        {
+            LocalReport rep = reportviewer.LocalReport;
+            switch (reportcode)
+            {
+                case "CXS"://Reporte de Cobro por Socio
+
+                    string socio = parameters[2].ToString();                    
+                    int codsoc = -1;
+                    int.TryParse(socio, out codsoc);
+
+                    rep.ReportPath = reportfolder + "CobroxSocio.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getCobrosSocio(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), (codsoc == 0 ? null : (int?)codsoc))));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    break;
+                case "VENTAS"://Reporte de Cobro por Socio
+
+                    string almacen1 = parameters[2].ToString();
+                    string pventa1 = parameters[3].ToString();
+                    string stralm1 = parameters[4].ToString();
+                    string strpve1 = parameters[5].ToString();
+                    string usr1 = parameters[6].ToString();
+
+                    int? almv1 = null;
+                    int? pvev1 = null;
+                    if (!string.IsNullOrEmpty(almacen1))
+                        almv1 = int.Parse(almacen1);
+                    if (!string.IsNullOrEmpty(pventa1))
+                        pvev1 = int.Parse(pventa1);
+
+                    rep.ReportPath = reportfolder + "ReporteVentasSri.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getVentasRet(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almv1, pvev1)));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    //rep.SetParameters(new ReportParameter("almacen", stralm));
+                    //rep.SetParameters(new ReportParameter("pventa", strpve));
+                    rep.SetParameters(new ReportParameter("usuario", usr1));
+
+                    break;
+                case "VEN"://Reporte de Cobro por Socio
+
+                    string almacen = parameters[2].ToString();
+                    string pventa = parameters[3].ToString();
+                    string stralm = parameters[4].ToString();
+                    string strpve = parameters[5].ToString();
+                    string usr = parameters[6].ToString(); 
+                    
+                    int? almv = null;
+                    int? pvev = null;
+                    if (!string.IsNullOrEmpty(almacen))
+                        almv = int.Parse(almacen);
+                    if (!string.IsNullOrEmpty(pventa))
+                        pvev = int.Parse(pventa);
+
+                    rep.ReportPath = reportfolder + "Ventas.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getVentas(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almv,pvev,true)));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("almacen", stralm));
+                    rep.SetParameters(new ReportParameter("pventa", strpve));
+                    rep.SetParameters(new ReportParameter("usuario", usr));
+
+                    break;
+                case "VENSOC"://Reporte de Cobro por Socio
+
+                    string almacens = parameters[2].ToString();
+                    string pventas = parameters[3].ToString();
+                    string stralms = parameters[4].ToString();
+                    string strpves = parameters[5].ToString();
+                    string usrs = parameters[6].ToString();
+
+                    rep.ReportPath = reportfolder + "VentasSocio.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getVentasSocio(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), int.Parse(almacens), int.Parse(pventas))));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("almacen", stralms));
+                    rep.SetParameters(new ReportParameter("pventa", strpves));
+                    rep.SetParameters(new ReportParameter("usuario", usrs));
+
+                    break;
+
+                case "VENSRI"://Reporte de Cobro por Socio
+
+                    string almacensri = parameters[2].ToString();
+                    string pventasri = parameters[3].ToString();
+                    int alm = int.Parse(almacensri);
+                    int pve = int.Parse(pventasri);
+                    rep.ReportPath = reportfolder + "ReporteVentasSri.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getVentasSri(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), alm, pve)));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("almacen", parameters[2].ToString()));
+                    rep.SetParameters(new ReportParameter("anuladas", "0"));
+                    rep.SetParameters(new ReportParameter("usuario", "USR"));
+
+                    break;
+
+
+                case "VENCB"://Reporte de Cobro por Socio
+
+                    string almacenb = parameters[2].ToString();
+                    string pventab = parameters[3].ToString();
+                     string stralmb = parameters[4].ToString();
+                    string strpveb = parameters[5].ToString();
+                    string usrb = parameters[6].ToString();
+                    int? almb = null;
+                    int? pveb = null;
+                    if (!string.IsNullOrEmpty(almacenb))
+                        almb = int.Parse(almacenb);
+                    if (!string.IsNullOrEmpty(pventab))
+                        pveb = int.Parse(pventab);
+                   
+                    rep.ReportPath = reportfolder + "ReporteCompraBienes.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getVentasBienes(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almb, pveb)));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    //rep.SetParameters(new ReportParameter("almacen", parameters[2].ToString()));
+                    //rep.SetParameters(new ReportParameter("anuladas", "0"));
+                    rep.SetParameters(new ReportParameter("usuario", usrb));
+
+                    break;
+
+
+                case "VENRET"://Reporte de Cobro por Socio
+
+                    string almacenr = parameters[2].ToString();
+                    string pventar = parameters[3].ToString();
+                    string stralmr = parameters[4].ToString();
+                    string strpver = parameters[5].ToString();
+                    string usrr = parameters[6].ToString();
+                    int? almr = null;
+                    int? pver = null;
+                    if (!string.IsNullOrEmpty(almacenr))
+                        almr = int.Parse(almacenr);
+                    if (!string.IsNullOrEmpty(pventar))
+                        pver = int.Parse(pventar);
+
+                    //rep.ReportPath = reportfolder + "ReporteRetenciones.rdlc";
+                    rep.ReportPath = reportfolder + "Retenciones.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getReporteRetenciones(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almr, pver, null)));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("usuario", usrr));
+                    break;
+                //case "FAC":
+                //    rep.ReportPath = reportfolder + "Factura.rdlc";
+                //    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.FAC.getFacturaDataTable(long.Parse(parameters[0].ToString()))));
+                //    break;
+                //case "RUT":
+                //    rep.ReportPath = reportfolder + "Report1.rdlc";
+                //    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getHojaRutaDataTable(long.Parse(parameters[0].ToString()))));
+                //    break;
+                //case "NOTCRE":
+                //    rep.ReportPath = reportfolder + "Notacre.rdlc";
+                //    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getNotaCreditoDataTable(long.Parse(parameters[0].ToString()))));
+                //    break;
+                //case "LPER":
+                //    rep.ReportPath = reportfolder + "Personas.rdlc";
+                //    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getPersonas("RUC")));
+                //    break;
+
+                case "NOTCRE"://Reporte de Cobro por Socio
+
+                    string almacencre = parameters[2].ToString();
+                    string pventacre = parameters[3].ToString();
+                    string impuestocre = parameters[7].ToString();
+                    int? almcre = null; //int.Parse(almacencre);
+                    int? pvecre = null;//int.Parse(pventacre);
+                    int? impcre = null;//int.Parse(impuesto);
+                    //rep.ReportPath = reportfolder + "ReporteRetenciones.rdlc";
+                    rep.ReportPath = reportfolder + "ReporteNcredito.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getNotasCredito(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almcre, pvecre)));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    // rep.SetParameters(new ReportParameter("impuesto", parameters[2].ToString()));
+                    //rep.SetParameters(new ReportParameter("anuladas", "0"));
+                    rep.SetParameters(new ReportParameter("usuario", "USR"));
+
+                    break;
+
+
+                case "REANU"://Reporte de Cobro por Socio
+
+                    string almacenanu = parameters[2].ToString();
+                    string pventanu = parameters[3].ToString();
+                    string impuestoanu = parameters[7].ToString();
+                    int? almanu = null; //int.Parse(almacencre);
+                    int? pveanu = null;//int.Parse(pventacre);
+                    int? impanu = null;//int.Parse(impuesto);
+                    //rep.ReportPath = reportfolder + "ReporteRetenciones.rdlc";
+                    rep.ReportPath = reportfolder + "ReporteAnuladas.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getAnuladas(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almanu, pveanu)));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    // rep.SetParameters(new ReportParameter("impuesto", parameters[2].ToString()));
+                    //rep.SetParameters(new ReportParameter("anuladas", "0"));
+                    rep.SetParameters(new ReportParameter("usuario", "USR"));
+
+                    break;
+                case "VENTASO"://Reporte de Cobro por Socio
+
+                    string almacenso = parameters[2].ToString();
+                    string pventaso = parameters[3].ToString();
+                    string stralmso = parameters[4].ToString();
+                    string strpveso = parameters[5].ToString();
+                    string usrso = parameters[6].ToString();
+                    int? almso = null; 
+                    int? pveso = null; 
+
+
+                    if (!string.IsNullOrEmpty(almacenso))
+                        almso = int.Parse(almacenso);
+                    if (!string.IsNullOrEmpty(pventaso))
+                        pveso = int.Parse(pventaso);
+
+                    rep.ReportPath = reportfolder + "ReporteVentasSocios.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getVentasSocios(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almso, pveso, usrso)));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("almacen", stralmso));
+                    rep.SetParameters(new ReportParameter("pventa", strpveso));
+                    // rep.SetParameters(new ReportParameter("anuladas", "0"));
+                    rep.SetParameters(new ReportParameter("usuario", usrso));
+
+                    break;
+                case "RETP"://Reporte tipos de pago
+
+                    string almacentp = parameters[2].ToString();
+                    string pventatp = parameters[3].ToString();
+                    string stralmtp = parameters[4].ToString();
+                    string strpvetp = parameters[5].ToString();
+                    string tp = parameters[7].ToString();
+                    string usrtp = parameters[6].ToString();
+                    int? tpi = null;
+                    int? almtp = null;
+                    int? pvetp = null;
+                    if (!string.IsNullOrEmpty(almacentp))
+                        almtp = int.Parse(almacentp);
+                    if (pventatp != "null")
+                        pvetp = int.Parse(pventatp);
+
+
+                    if (!string.IsNullOrEmpty(tp))
+                        tpi = int.Parse(tp);
+
+                    rep.ReportPath = reportfolder + "ReporteTpagos.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getVentasTiposPagos(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almtp, pvetp, tpi)));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    //rep.SetParameters(new ReportParameter("almacen", stralmtp));
+                    //rep.SetParameters(new ReportParameter("pventa", strpvetp));
+                    // rep.SetParameters(new ReportParameter("anuladas", "0"));
+                    rep.SetParameters(new ReportParameter("usuario", usrtp));
+
+                    break;
+                case "COMPRET"://Reporte de Compras con Retencion
+
+                    string almacencor = parameters[2].ToString();
+                    string pventacor = parameters[3].ToString();
+                    string stralcor = parameters[4].ToString();
+                    string strpvcor = parameters[5].ToString();
+                    string usrcor = parameters[6].ToString();
+                    int? almcor = null;
+                    int? pvecor = null;
+                    bool ret = false;
+                    bool.TryParse(parameters[7].ToString(), out ret);                    
+
+                    if (ret)
+                    {
+                        rep.ReportPath = reportfolder + "ReporteComprarsRetenciones.rdlc";
+                        rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getComprasRetencioines(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almcor, pvecor, true)));
+                    }else
+                    {                    
+                        rep.ReportPath = reportfolder + "ComprasSinRetenciones.rdlc";
+                        rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getComprasRetencioines(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almcor, pvecor, false)));
+                    }
+
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    //  rep.SetParameters(new ReportParameter("almacen", stralcor));
+                    // rep.SetParameters(new ReportParameter("pventa", strpvcor));
+                    // rep.SetParameters(new ReportParameter("anuladas", "0"));
+                    rep.SetParameters(new ReportParameter("usuario", usrcor));
+
+                    break;
+                case "EGRESOBAN"://Reporte de Cobro por Socio
+
+                    string almaceneb = parameters[2].ToString();
+                    string pventaeb = parameters[3].ToString();
+                    string stralmeb = parameters[4].ToString();
+                    string strpveeb = parameters[5].ToString();
+                    string usreb = parameters[6].ToString();
+
+                    int? almveb = null;
+                    int? pveveb = null;
+                    if (almaceneb != "")
+                        almveb = int.Parse(almaceneb);
+                    if (pventaeb != "null")
+                        pveveb = int.Parse(pventaeb);
+
+                    rep.ReportPath = reportfolder + "ReporteEgresoBanco.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getEgresoBanco(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almveb, pveveb)));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    //  rep.SetParameters(new ReportParameter("almacen", stralmeb));
+                    // rep.SetParameters(new ReportParameter("pventa", strpveeb));
+                    rep.SetParameters(new ReportParameter("usuario", usreb));
+
+                    break;
+
+
+
+                case "COSO"://Reporte de Cobro por Socio
+
+                    string almacenco = parameters[2].ToString();
+                    string pventaco = parameters[3].ToString();
+                    string stralmco = parameters[4].ToString();
+                    string strpveco = parameters[5].ToString();
+
+                    
+                    int? almco = null;
+                    int? pveco = null;
+                    if (!string.IsNullOrEmpty(almacenco))
+                        almco= int.Parse(almacenco);
+                    if (!string.IsNullOrEmpty(pventaco))
+                        pveco = int.Parse(pventaco);
+
+                 //   string usrco = parameters[6].ToString();
+
+                    rep.ReportPath = reportfolder + "CobroSocios.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.getCobroSocio(DateTime.Parse(parameters[0].ToString()), DateTime.Parse(parameters[1].ToString()), almco, pveco)));
+                    rep.SetParameters(new ReportParameter("desde", DateTime.Parse(parameters[0].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("hasta", DateTime.Parse(parameters[1].ToString()).ToShortDateString()));
+                    rep.SetParameters(new ReportParameter("almacen", stralmco));
+                    rep.SetParameters(new ReportParameter("pventa", strpveco));
+                  //  rep.SetParameters(new ReportParameter("usuario", usrco));
+
+                    break;
+
+
+                case "VENSO"://Reporte de Cobro por Socio
+
+                    string sociov = parameters[2].ToString();
+                    string periodov = parameters[0].ToString();
+                    string mesv = parameters[1].ToString();
+                    string usuario = parameters[3].ToString();
+                    string alamcen = parameters[4].ToString();
+                    string pventav  = parameters[5].ToString();
+                    string alamcens = parameters[6].ToString();
+                    string pventavs  = parameters[7].ToString();
+                     if (parameters[4].ToString() == "")
+                    {
+                        alamcens = "TODOS";
+
+
+                    }
+                     if (parameters[5].ToString() == "")
+                     {
+                         pventavs = "TODOS";
+                     }
+                    int? almacenc = null;
+                    int? pventac = null;
+                    if (alamcen != "")
+                        almacenc = int.Parse(alamcen);
+                    if (pventav != "")
+                        pventac = int.Parse(pventav);
+                    int codsocv = -1;
+                    int.TryParse(sociov, out codsocv);
+                    int periodo;
+                    int mes;
+                    int.TryParse(periodov, out periodo);
+                    int.TryParse(mesv, out mes);
+
+                    rep.ReportPath = reportfolder + "VentasSociosTotales.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.ReporteVentasSocios(((int?)periodo), ((int?)mes), (codsocv == 0 ? null : (int?)codsocv))));
+                    rep.SetParameters(new ReportParameter("periodo", periodov));
+                    rep.SetParameters(new ReportParameter("mes", mesv));
+                    rep.SetParameters(new ReportParameter("usuario", usuario));
+                    rep.SetParameters(new ReportParameter("almacen", alamcens));
+                    rep.SetParameters(new ReportParameter("pventa", pventavs));
+                    break;
+
+
+
+                      case "VENSOT"://Reporte de Cobro por Socio
+
+                    string sociovt = parameters[2].ToString();
+                    string periodovt = parameters[0].ToString();
+                    string mesvt = parameters[1].ToString();
+                    string usuariot = parameters[3].ToString();
+                    string alamcent = parameters[4].ToString();
+                    string pventavt  = parameters[5].ToString();
+                    string alamcenst = parameters[6].ToString();
+                    string pventavst  = parameters[7].ToString();
+                    if (parameters[4].ToString() == "")
+                    {
+                        alamcenst = "TODOS";
+
+
+                    }
+                    if (parameters[5].ToString() == "")
+                    
+                    {
+                        pventavst = "TODOS";
+
+
+                    }
+                    int? almacenct = null;
+                    int? pventact = null;
+                    if (alamcent != "")
+                        almacenct = int.Parse(alamcent);
+                    if (pventavt != "")
+                        pventact = int.Parse(pventavt);
+                    int codsocvt = -1;
+                    int.TryParse(sociovt, out codsocv);
+                    int periodot;
+                    int mest;
+                    int.TryParse(periodovt, out periodot);
+                    int.TryParse(mesvt, out mest);
+
+                    rep.ReportPath = reportfolder + "CobroSocios.rdlc";
+                    rep.DataSources.Add(new ReportDataSource("DataSet1", Packages.General.ReporteVentasSocios(((int?)periodot), ((int?)mest), (codsocvt == 0 ? null : (int?)codsocvt), almacenct, pventact)));
+                    rep.SetParameters(new ReportParameter("periodo", periodovt));
+                    rep.SetParameters(new ReportParameter("mes", mesvt));
+                    rep.SetParameters(new ReportParameter("usuario", usuariot));
+                    rep.SetParameters(new ReportParameter("almacen", alamcenst));
+                    rep.SetParameters(new ReportParameter("pventa", pventavst));
+                    break;
+            }
+            }
+
+
+
+        }
+    }
+

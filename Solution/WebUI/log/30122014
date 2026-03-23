@@ -1,0 +1,6 @@
+30/12/2014 19:16:48,ERROR 2712201401019036575100110140020000000856871230619
+30/12/2014 19:16:48,WebUI,Referencia a objeto no establecida como instancia de un objeto.,   en WebUI.Proceso.AutorizacionComprobante(Array a, String clave, Int32 empresa) en D:\Proyectos\SICE\SolutionSICE\WebUI\clases\Proceso.cs:línea 398
+30/12/2014 19:17:35,ERROR 2712201401019036575100110140020000000856871230619
+30/12/2014 19:17:35,WebUI,Referencia a objeto no establecida como instancia de un objeto.,   en WebUI.Proceso.AutorizacionComprobante(Array a, String clave, Int32 empresa) en D:\Proyectos\SICE\SolutionSICE\WebUI\clases\Proceso.cs:línea 398
+30/12/2014 19:18:39,ERROR 2712201401019036575100110140020000000856871230619
+30/12/2014 19:18:39,WebUI,Referencia a objeto no establecida como instancia de un objeto.,   en WebUI.Proceso.AutorizacionComprobante(Array a, String clave, Int32 empresa) en D:\Proyectos\SICE\SolutionSICE\WebUI\clases\Proceso.cs:línea 398

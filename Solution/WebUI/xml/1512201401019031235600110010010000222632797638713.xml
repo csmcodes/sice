@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<autorizacion><estado>AUTORIZADO</estado><numeroAutorizacion>1812201407374901903123560010174493822</numeroAutorizacion><fechaAutorizacion>2014-12-18T07:37:49.070-05:00</fechaAutorizacion><ambiente>PRUEBAS</ambiente><comprobante>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;factura id="comprobante" version="1.0.0"&gt;&lt;infoTributaria&gt;&lt;ambiente&gt;1&lt;/ambiente&gt;&lt;tipoEmision&gt;1&lt;/tipoEmision&gt;&lt;razonSocial&gt;VYCAST S A&lt;/razonSocial&gt;&lt;ruc&gt;0190312356001&lt;/ruc&gt;&lt;claveAcceso&gt;1512201401019031235600110010010000222632797638713&lt;/claveAcceso&gt;&lt;codDoc&gt;01&lt;/codDoc&gt;&lt;estab&gt;001&lt;/estab&gt;&lt;ptoEmi&gt;001&lt;/ptoEmi&gt;&lt;secuencial&gt;000022263&lt;/secuencial&gt;&lt;dirMatriz&gt;AV. ESPANA 2-88 NUNEZ DE BONILLA&lt;/dirMatriz&gt;&lt;/infoTributaria&gt;
+&lt;infoFactura&gt;
+		&lt;fechaEmision&gt;15/12/2014&lt;/fechaEmision&gt;
+		&lt;contribuyenteEspecial&gt;263&lt;/contribuyenteEspecial&gt;
+		&lt;obligadoContabilidad&gt;SI&lt;/obligadoContabilidad&gt;
+		&lt;tipoIdentificacionComprador&gt;04&lt;/tipoIdentificacionComprador&gt;
+		&lt;razonSocialComprador&gt;VELEZ GALARZA LORENA ESMERALDA&lt;/razonSocialComprador&gt;		
+		&lt;identificacionComprador&gt;1304880576001&lt;/identificacionComprador&gt;
+		&lt;totalSinImpuestos&gt;100.00&lt;/totalSinImpuestos&gt;
+		&lt;totalDescuento&gt;0.00&lt;/totalDescuento&gt;
+		&lt;totalConImpuestos&gt;
+			&lt;totalImpuesto&gt;
+				&lt;codigo&gt;2&lt;/codigo&gt;
+				&lt;codigoPorcentaje&gt;2&lt;/codigoPorcentaje&gt;
+				&lt;baseImponible&gt;100.00&lt;/baseImponible&gt;
+				&lt;valor&gt;12.00&lt;/valor&gt;
+			&lt;/totalImpuesto&gt;
+		&lt;/totalConImpuestos&gt;
+		&lt;propina&gt;0.00&lt;/propina&gt;
+		&lt;importeTotal&gt;112.00&lt;/importeTotal&gt;
+		&lt;moneda&gt;DOLAR&lt;/moneda&gt;
+	&lt;/infoFactura&gt;
+	&lt;detalles&gt;
+		&lt;detalle&gt;
+			&lt;codigoPrincipal&gt;TP-RVC04&lt;/codigoPrincipal&gt;
+			&lt;descripcion&gt;Camara de retro montaje 2 en 1  diametro 18.5mm&lt;/descripcion&gt;
+			&lt;cantidad&gt;1.00&lt;/cantidad&gt;
+			&lt;precioUnitario&gt;100.00&lt;/precioUnitario&gt;
+			&lt;descuento&gt;0.00&lt;/descuento&gt;
+			&lt;precioTotalSinImpuesto&gt;100.00&lt;/precioTotalSinImpuesto&gt;
+			&lt;impuestos&gt;
+				&lt;impuesto&gt;
+					&lt;codigo&gt;2&lt;/codigo&gt;
+					&lt;codigoPorcentaje&gt;2&lt;/codigoPorcentaje&gt;
+					&lt;tarifa&gt;12&lt;/tarifa&gt;
+					&lt;baseImponible&gt;100.00&lt;/baseImponible&gt;
+					&lt;valor&gt;12.00&lt;/valor&gt;
+				&lt;/impuesto&gt;
+			&lt;/impuestos&gt;
+		&lt;/detalle&gt;		
+	&lt;/detalles&gt;
+&lt;ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature589016"&gt;
+&lt;ds:SignedInfo Id="Signature-SignedInfo985229"&gt;
+&lt;ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"&gt;&lt;/ds:CanonicalizationMethod&gt;
+&lt;ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"&gt;&lt;/ds:SignatureMethod&gt;
+&lt;ds:Reference Id="SignedPropertiesID941938" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature589016-SignedProperties89994"&gt;
+&lt;ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"&gt;&lt;/ds:DigestMethod&gt;
+&lt;ds:DigestValue&gt;CVXCNFWj4Gtdx0QSuXzl7Lwglsg=&lt;/ds:DigestValue&gt;
+&lt;/ds:Reference&gt;
+&lt;ds:Reference URI="#Certificate1942180"&gt;
+&lt;ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"&gt;&lt;/ds:DigestMethod&gt;
+&lt;ds:DigestValue&gt;MOnov293jamH4041AWAr99Xjgvc=&lt;/ds:DigestValue&gt;
+&lt;/ds:Reference&gt;
+&lt;ds:Reference Id="Reference-ID-283510" URI="#comprobante"&gt;
+&lt;ds:Transforms&gt;
+&lt;ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"&gt;&lt;/ds:Transform&gt;
+&lt;/ds:Transforms&gt;
+&lt;ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"&gt;&lt;/ds:DigestMethod&gt;
+&lt;ds:DigestValue&gt;LjO5k0jlH+/TWBcNnQLs97IMajg=&lt;/ds:DigestValue&gt;
+&lt;/ds:Reference&gt;
+&lt;/ds:SignedInfo&gt;
+&lt;ds:SignatureValue Id="SignatureValue175255"&gt;
+qkyK3H98b78IslafJnulN80JMzTdkxg7LS+ojv0JSw1Fjr1fhSFKNOcPZNL7iKlbFGKssgy1UlCB
+MkgIil4CPbWGkhV7y0f4wlZAA/3eJsn/jsyBP5yfl6eoBue1aXjozMQkfP4sNBKXUCuTT9uyxsY+
+q5SpzxXC2Xyhv2yEv7OXpTxgglG2UpmeZPaMdM6/n1pazWAtwuRBebCaIfAN7T2wK83fng9i/+x9
+u8VXq0HPTGjD01wLymT1U//vZcpqDIRSWanjek6NhCiSSYUeH+j6L2q/pkR98eFcZiyTrOvlQA9u
+X4OLAJ6AmpxHyACDMF+obdAheFLmQETQQKvLIg==
+&lt;/ds:SignatureValue&gt;
+&lt;ds:KeyInfo Id="Certificate1942180"&gt;
+&lt;ds:X509Data&gt;
+&lt;ds:X509Certificate&gt;
+MIIKEzCCB/ugAwIBAgIETkOdejANBgkqhkiG9w0BAQsFADCBoTELMAkGA1UEBhMCRUMxIjAgBgNV
+BAoTGUJBTkNPIENFTlRSQUwgREVMIEVDVUFET1IxNzA1BgNVBAsTLkVOVElEQUQgREUgQ0VSVElG
+SUNBQ0lPTiBERSBJTkZPUk1BQ0lPTi1FQ0lCQ0UxDjAMBgNVBAcTBVFVSVRPMSUwIwYDVQQDExxB
+QyBCQU5DTyBDRU5UUkFMIERFTCBFQ1VBRE9SMB4XDTE0MTEyNDE1MTQwMVoXDTE1MTEyNDE1NDQw
+MVowgbcxCzAJBgNVBAYTAkVDMSIwIAYDVQQKExlCQU5DTyBDRU5UUkFMIERFTCBFQ1VBRE9SMTcw
+NQYDVQQLEy5FTlRJREFEIERFIENFUlRJRklDQUNJT04gREUgSU5GT1JNQUNJT04tRUNJQkNFMQ4w
+DAYDVQQHEwVRVUlUTzE7MBEGA1UEBRMKMDAwMDA5MjMyODAmBgNVBAMTH1ZJQ1RPUiBIVUdPIEFT
+VFVESUxMTyBBU1RVRElMTE8wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCxW+onk8H2
+ctX2RReyLBlOCaSIYOtcTkft1ibcEJl2BX23tNoONHEa74alYpTqsox5s9VJ9LqIjUfsjFqH5S8W
+GuFKAFrdTO5/nA0j60VL2MFrODOnAWdXqDu8tfrDjQaTB4D1A/cPQMnWxtYpkkAySPjKcQd9Y6Nl
+RmlSSR/PEWg3P1LdEWlEtTFLHz7nggKa/FFnchMedWqohM0aCMn2n1a2XEB6zGWLnpspabwTBBNs
+yWn0CyKd8aBaWjlcSNAK/ji0F6/avrgUbiX/ZoTxW8h/6W9FcVneGjcLloOQKx+edwUehOI8NIqf
+IKokqm8X1O3m3A8VQ8DASxq+QhDjAgMBAAGjggU5MIIFNTALBgNVHQ8EBAMCB4AwZwYDVR0gBGAw
+XjBcBgsrBgEEAYKoOwICATBNMEsGCCsGAQUFBwIBFj9odHRwOi8vd3d3LmVjaS5iY2UuZWMvcG9s
+aXRpY2EtY2VydGlmaWNhZG8vcGVyc29uYS1qdXJpZGljYS5wZGYwgZEGCCsGAQUFBwEBBIGEMIGB
+MD4GCCsGAQUFBzABhjJodHRwOi8vb2NzcC5lY2kuYmNlLmVjL2VqYmNhL3B1YmxpY3dlYi9zdGF0
+dXMvb2NzcDA/BggrBgEFBQcwAYYzaHR0cDovL29jc3AxLmVjaS5iY2UuZWMvZWpiY2EvcHVibGlj
+d2ViL3N0YXR1cy9vY3NwMD4GCisGAQQBgqg7AwoEMBMuVkVISUNVTE9TIFkgQ09NRVJDSU8gQVNU
+VURJTExPIFZZQ0FTVCBDSUEgTFREQTAdBgorBgEEAYKoOwMLBA8TDTAxOTAzMTIzNTYwMDEwGgYK
+KwYBBAGCqDsDAQQMEwowMTAyNDk3MTg3MBsGCisGAQQBgqg7AwIEDRMLVklDVE9SIEhVR08wGQYK
+KwYBBAGCqDsDAwQLEwlBU1RVRElMTE8wGQYKKwYBBAGCqDsDBAQLEwlBU1RVRElMTE8wHwYKKwYB
+BAGCqDsDBQQREw9HRVJFTlRFIEdFTkVSQUwwMwYKKwYBBAGCqDsDBwQlEyNBVkVOSURBIEVTUEFO
+QSAxNzk3IFkgQVZJTEEgRVNRVUlOQTAZBgorBgEEAYKoOwMIBAsTCTA3Mjg2MzUzNTAWBgorBgEE
+AYKoOwMJBAgTBkN1ZW5jYTAXBgorBgEEAYKoOwMMBAkTB0VDVUFET1IwIAYKKwYBBAGCqDsDMwQS
+ExBTT0ZUV0FSRS1BUkNISVZPMCEGA1UdEQQaMBiBFmh1Z28zMDA0NjZAaG90bWFpbC5jb20wggHf
+BgNVHR8EggHWMIIB0jCCAc6gggHKoIIBxoaB1WxkYXA6Ly9iY2VxbGRhcHN1YnAxLmJjZS5lYy9j
+bj1DUkwxNzUsY249QUMlMjBCQU5DTyUyMENFTlRSQUwlMjBERUwlMjBFQ1VBRE9SLGw9UVVJVE8s
+b3U9RU5USURBRCUyMERFJTIwQ0VSVElGSUNBQ0lPTiUyMERFJTIwSU5GT1JNQUNJT04tRUNJQkNF
+LG89QkFOQ08lMjBDRU5UUkFMJTIwREVMJTIwRUNVQURPUixjPUVDP2NlcnRpZmljYXRlUmV2b2Nh
+dGlvbkxpc3Q/YmFzZYY0aHR0cDovL3d3dy5lY2kuYmNlLmVjL0NSTC9lY2lfYmNlX2VjX2NybGZp
+bGVjb21iLmNybKSBtTCBsjELMAkGA1UEBhMCRUMxIjAgBgNVBAoTGUJBTkNPIENFTlRSQUwgREVM
+IEVDVUFET1IxNzA1BgNVBAsTLkVOVElEQUQgREUgQ0VSVElGSUNBQ0lPTiBERSBJTkZPUk1BQ0lP
+Ti1FQ0lCQ0UxDjAMBgNVBAcTBVFVSVRPMSUwIwYDVQQDExxBQyBCQU5DTyBDRU5UUkFMIERFTCBF
+Q1VBRE9SMQ8wDQYDVQQDEwZDUkwxNzUwKwYDVR0QBCQwIoAPMjAxNDExMjQxNTE0MDFagQ8yMDE1
+MTEyNDE1NDQwMVowHwYDVR0jBBgwFoAUGPnw++YyHJlmOSrKi7JpfUknv84wHQYDVR0OBBYEFEh5
+zoqtU4aywobOvrvZCE6wZjcRMAkGA1UdEwQCMAAwGQYJKoZIhvZ9B0EABAwwChsEVjguMQMCBLAw
+DQYJKoZIhvcNAQELBQADggIBAGJWgBhB8xpWREIfxzRxeTGfyQnSWj5AB9d/BAwFbTnfnsrKN6I5
+suli1arNJ3G18xucuV5tJu4hWCILXsdcMWAMD8rPWfVquAzzd/x6IcG3ZZMIkBOu0DY1vSsLXh4I
+pD7atIzjRDB6nw8juIDp3yexMeKQ2vuJnLX/2P9XaRzSsBeytLdS54kakk6xlNF9XrtoR2Pd9XI2
+CUk/wJcOW/RzfrNIPSlGvhYY617T7TkQyRoklVL1dERi5eJWttyEEaf7KSDlI4qNNGtyn9sQ7fwk
+7+Jd2ZqvTJK3Tn6MmsYUSKlcVcgdCtLU9Z80bXmey9uVsc+S5jYYhnyC8o8FmKmilScpsPqJ/oRw
+4RSyZgsEunfXAnZ05JudsQChyMexzkCxuBDGmJ9kDQLJ6ek+kGCaK7F/LJdk9HbxPekzu8k0kzYY
+YxBqelV3th1gmX8s1JDCspheX1CaRXvXFrWj02cpO1B2vIwpInPuf7FheJLxTrehOeDw3UEqKTF0
+QSmj+B0ijmsbaj2A7gudU0CtwxN5d1r+KfJ/pO5oJsNuPncu5rauVVLa6FyYmb1ita702A+ewoHI
+VtM7WiSjrklMPxaUKKxirW+aUmoj9NtYvazN8WJlyk0nk+YSXrf5VsB3By22g1qO65liVSZ2MPqY
+9K4Wc+lzm5yIe/8Xxv+sVCvi
+&lt;/ds:X509Certificate&gt;
+&lt;/ds:X509Data&gt;
+&lt;ds:KeyValue&gt;
+&lt;ds:RSAKeyValue&gt;
+&lt;ds:Modulus&gt;
+sVvqJ5PB9nLV9kUXsiwZTgmkiGDrXE5H7dYm3BCZdgV9t7TaDjRxGu+GpWKU6rKMebPVSfS6iI1H
+7Ixah+UvFhrhSgBa3Uzuf5wNI+tFS9jBazgzpwFnV6g7vLX6w40GkweA9QP3D0DJ1sbWKZJAMkj4
+ynEHfWOjZUZpUkkfzxFoNz9S3RFpRLUxSx8+54ICmvxRZ3ITHnVqqITNGgjJ9p9WtlxAesxli56b
+KWm8EwQTbMlp9AsinfGgWlo5XEjQCv44tBev2r64FG4l/2aE8VvIf+lvRXFZ3ho3C5aDkCsfnncF
+HoTiPDSKnyCqJKpvF9Tt5twPFUPAwEsavkIQ4w==
+&lt;/ds:Modulus&gt;
+&lt;ds:Exponent&gt;AQAB&lt;/ds:Exponent&gt;
+&lt;/ds:RSAKeyValue&gt;
+&lt;/ds:KeyValue&gt;
+&lt;/ds:KeyInfo&gt;
+&lt;ds:Object Id="Signature589016-Object446238"&gt;&lt;etsi:QualifyingProperties Target="#Signature589016"&gt;&lt;etsi:SignedProperties Id="Signature589016-SignedProperties89994"&gt;&lt;etsi:SignedSignatureProperties&gt;&lt;etsi:SigningTime&gt;2014-12-17T20:21:05-05:00&lt;/etsi:SigningTime&gt;&lt;etsi:SigningCertificate&gt;&lt;etsi:Cert&gt;&lt;etsi:CertDigest&gt;&lt;ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"&gt;&lt;/ds:DigestMethod&gt;&lt;ds:DigestValue&gt;VSBXaw2ViA/m9nkZd81QRKQ97/U=&lt;/ds:DigestValue&gt;&lt;/etsi:CertDigest&gt;&lt;etsi:IssuerSerial&gt;&lt;ds:X509IssuerName&gt;CN=AC BANCO CENTRAL DEL ECUADOR,L=QUITO,OU=ENTIDAD DE CERTIFICACION DE INFORMACION-ECIBCE,O=BANCO CENTRAL DEL ECUADOR,C=EC&lt;/ds:X509IssuerName&gt;&lt;ds:X509SerialNumber&gt;1313054074&lt;/ds:X509SerialNumber&gt;&lt;/etsi:IssuerSerial&gt;&lt;/etsi:Cert&gt;&lt;/etsi:SigningCertificate&gt;&lt;etsi:SignaturePolicyIdentifier&gt;&lt;etsi:SignaturePolicyId&gt;&lt;etsi:SigPolicyId&gt;&lt;etsi:Identifier&gt;http://www.facturae.es/politica_de_firma_formato_facturae/politica_de_firma_formato_facturae_v3_1.pdf&lt;/etsi:Identifier&gt;&lt;etsi:Description&gt;Política de Firma FacturaE v3.1&lt;/etsi:Description&gt;&lt;/etsi:SigPolicyId&gt;&lt;etsi:SigPolicyHash&gt;&lt;ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"&gt;&lt;/ds:DigestMethod&gt;&lt;ds:DigestValue&gt;Ohixl6upD6av8N7pEvDABhEL6hM=&lt;/ds:DigestValue&gt;&lt;/etsi:SigPolicyHash&gt;&lt;/etsi:SignaturePolicyId&gt;&lt;/etsi:SignaturePolicyIdentifier&gt;&lt;etsi:SignerRole&gt;&lt;etsi:ClaimedRoles&gt;&lt;etsi:ClaimedRole&gt;Rol de firma&lt;/etsi:ClaimedRole&gt;&lt;/etsi:ClaimedRoles&gt;&lt;/etsi:SignerRole&gt;&lt;/etsi:SignedSignatureProperties&gt;&lt;etsi:SignedDataObjectProperties&gt;&lt;etsi:DataObjectFormat ObjectReference="#Reference-ID-283510"&gt;&lt;etsi:Description&gt;Documento de ejemplo&lt;/etsi:Description&gt;&lt;etsi:MimeType&gt;text/xml&lt;/etsi:MimeType&gt;&lt;/etsi:DataObjectFormat&gt;&lt;/etsi:SignedDataObjectProperties&gt;&lt;/etsi:SignedProperties&gt;&lt;/etsi:QualifyingProperties&gt;&lt;/ds:Object&gt;&lt;/ds:Signature&gt;&lt;/factura&gt;</comprobante><mensajes><mensaje><identificador>60</identificador><mensaje>ESTE PROCESO FUE REALIZADO EN EL AMBIENTE DE PRUEBAS</mensaje><tipo>INFORMATIVO</tipo></mensaje></mensajes></autorizacion>

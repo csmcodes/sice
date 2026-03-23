@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<factura id="comprobante" version="1.0.0"><infoTributaria><ambiente>2</ambiente><tipoEmision>1</tipoEmision><razonSocial>VEHICULOS Y COMERCIO ASTUDILLO VYCAST CIA LTDA</razonSocial><ruc>0190312356001</ruc><claveAcceso>2801201501019031235600120010140000000252113143413</claveAcceso><codDoc>01</codDoc><estab>001</estab><ptoEmi>014</ptoEmi><secuencial>000000025</secuencial><dirMatriz>CUENCA, AV. ESPANA 17-97 AVILA</dirMatriz></infoTributaria><infoFactura><fechaEmision>28/01/2015</fechaEmision><contribuyenteEspecial>216</contribuyenteEspecial><obligadoContabilidad>SI</obligadoContabilidad><tipoIdentificacionComprador>07</tipoIdentificacionComprador><razonSocialComprador>CONSUMIDOR FINAL</razonSocialComprador><identificacionComprador>9999999999999</identificacionComprador><totalSinImpuestos>1698.98</totalSinImpuestos><totalDescuento>0.00</totalDescuento><totalConImpuestos><totalImpuesto><codigo>2</codigo><codigoPorcentaje>2</codigoPorcentaje><baseImponible>1783.93</baseImponible><valor>214.07</valor></totalImpuesto><totalImpuesto><codigo>3</codigo><codigoPorcentaje>3073</codigoPorcentaje><baseImponible>1698.98</baseImponible><valor>84.95</valor></totalImpuesto></totalConImpuestos><propina>0.00</propina><importeTotal>1998.00</importeTotal><moneda>DOLAR</moneda></infoFactura><detalles><detalle><codigoPrincipal>MOT000000018967</codigoPrincipal><codigoAuxiliar>DY162FMJ2F3001750</codigoAuxiliar><descripcion>MOTOCICLETA PASEO DY150-5 ANO 2015 COLOR NEGRO MOTOR DY162FMJ2F3001750 CHASIS LATPCKLY2F2031561</descripcion><cantidad>1.00</cantidad><precioUnitario>849.49</precioUnitario><descuento>0.00</descuento><precioTotalSinImpuesto>849.49</precioTotalSinImpuesto><detallesAdicionales><detAdicional nombre="LINEA1" valor="CLASE:  MOTOCICLETA        TIPO:  PASEO          MARCA:  DAYANG        MODELO:  DY150-5"></detAdicional><detAdicional nombre="LINEA2" valor="MOTOR:  DY162FMJ2F3001750  CHASIS:  LATPCKLY2F2031561  COLOR:  NEGRO  ANIO:  2015  CPN:  VYA012575  PAIS ORIGEN: CHINA POPULAR"></detAdicional></detallesAdicionales><impuestos><impuesto><codigo>2</codigo><codigoPorcentaje>2</codigoPorcentaje><tarifa>12</tarifa><baseImponible>891.96</baseImponible><valor>107.04</valor></impuesto><impuesto><codigo>3</codigo><codigoPorcentaje>3073</codigoPorcentaje><tarifa>5</tarifa><baseImponible>849.49</baseImponible><valor>42.47</valor></impuesto></impuestos></detalle><detalle><codigoPrincipal>MOT000000019630</codigoPrincipal><codigoAuxiliar>DY162FMJ2F3001173</codigoAuxiliar><descripcion>MOTOCICLETA PASEO DY150-5 ANO 2015 COLOR ROJO MOTOR DY162FMJ2F3001173 CHASIS LATPCKLY3F2031164</descripcion><cantidad>1.00</cantidad><precioUnitario>849.49</precioUnitario><descuento>0.00</descuento><precioTotalSinImpuesto>849.49</precioTotalSinImpuesto><detallesAdicionales><detAdicional nombre="LINEA1" valor="CLASE:  MOTOCICLETA        TIPO:  PASEO          MARCA:  DAYANG        MODELO:  DY150-5"></detAdicional><detAdicional nombre="LINEA2" valor="MOTOR:  DY162FMJ2F3001173  CHASIS:  LATPCKLY3F2031164  COLOR:  ROJO  ANIO:  2015  CPN:  VYA013238  PAIS ORIGEN: CHINA POPULAR"></detAdicional></detallesAdicionales><impuestos><impuesto><codigo>2</codigo><codigoPorcentaje>2</codigoPorcentaje><tarifa>12</tarifa><baseImponible>891.97</baseImponible><valor>107.03</valor></impuesto><impuesto><codigo>3</codigo><codigoPorcentaje>3073</codigoPorcentaje><tarifa>5</tarifa><baseImponible>849.49</baseImponible><valor>42.48</valor></impuesto></impuestos></detalle></detalles><infoAdicional><campoAdicional nombre="Direccion">UNIDAD NACIONAL Y SEGUNDA TRASVERSAL S/N Y PREDRO VICENTE MALDONADO</campoAdicional><campoAdicional nombre="Telefono">022156058</campoAdicional><campoAdicional nombre="Vendedor">MEDARDO PONCE</campoAdicional><campoAdicional nombre="Ciudad">PUERTO QUITO</campoAdicional><campoAdicional nombre="Fpago">Credito 5 pagos</campoAdicional><campoAdicional nombre="Clavecliente">1284</campoAdicional><campoAdicional nombre="Transporte">0</campoAdicional></infoAdicional><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature523092">
+<ds:SignedInfo Id="Signature-SignedInfo883096">
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:CanonicalizationMethod>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod>
+<ds:Reference Id="SignedPropertiesID115791" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature523092-SignedProperties281525">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>nuXCM6tBmdeP/ird0qlgIGvYYxU=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#Certificate1495141">
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>RRilWTTHxo+Sl/LU9MV934mQu3g=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Id="Reference-ID-54761" URI="#comprobante">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
+<ds:DigestValue>fele+bVG0ZCh530EqO3x9LuGg8g=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue Id="SignatureValue652926">
+kZTuonSxQ5KxigobcAe99fhUCXC3bwsCp6JPbGaRGZF/1azW6chOUJID7F0qrdhNTrAITG7Ppisu
+LSCXXDPx5sOUWc/V/ToGkIgpjA1Lbou3av/XkoR3J7ErcYPjbg+lVFdsxACEvm3Hp/lekKcbgdHK
+YETYD46TajZ5fXWJf2I4bT7wBTWuybd+ZAjIlrzmGW/nVKVKyxvCRFCWIN0KnbCK65SjHla7jabK
+mrksSKEL0sjlZihzkAbrVufx02prmZhQcpCexJxskLDDNM+gGAIlzoGzp0cp8Srj7mC9qkVUOnop
+XOB5+UKB4JTdL5VEFcU+954020qlL6t85QyyvA==
+</ds:SignatureValue>
+<ds:KeyInfo Id="Certificate1495141">
+<ds:X509Data>
+<ds:X509Certificate>
+MIIKEzCCB/ugAwIBAgIETkOdejANBgkqhkiG9w0BAQsFADCBoTELMAkGA1UEBhMCRUMxIjAgBgNV
+BAoTGUJBTkNPIENFTlRSQUwgREVMIEVDVUFET1IxNzA1BgNVBAsTLkVOVElEQUQgREUgQ0VSVElG
+SUNBQ0lPTiBERSBJTkZPUk1BQ0lPTi1FQ0lCQ0UxDjAMBgNVBAcTBVFVSVRPMSUwIwYDVQQDExxB
+QyBCQU5DTyBDRU5UUkFMIERFTCBFQ1VBRE9SMB4XDTE0MTEyNDE1MTQwMVoXDTE1MTEyNDE1NDQw
+MVowgbcxCzAJBgNVBAYTAkVDMSIwIAYDVQQKExlCQU5DTyBDRU5UUkFMIERFTCBFQ1VBRE9SMTcw
+NQYDVQQLEy5FTlRJREFEIERFIENFUlRJRklDQUNJT04gREUgSU5GT1JNQUNJT04tRUNJQkNFMQ4w
+DAYDVQQHEwVRVUlUTzE7MBEGA1UEBRMKMDAwMDA5MjMyODAmBgNVBAMTH1ZJQ1RPUiBIVUdPIEFT
+VFVESUxMTyBBU1RVRElMTE8wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCxW+onk8H2
+ctX2RReyLBlOCaSIYOtcTkft1ibcEJl2BX23tNoONHEa74alYpTqsox5s9VJ9LqIjUfsjFqH5S8W
+GuFKAFrdTO5/nA0j60VL2MFrODOnAWdXqDu8tfrDjQaTB4D1A/cPQMnWxtYpkkAySPjKcQd9Y6Nl
+RmlSSR/PEWg3P1LdEWlEtTFLHz7nggKa/FFnchMedWqohM0aCMn2n1a2XEB6zGWLnpspabwTBBNs
+yWn0CyKd8aBaWjlcSNAK/ji0F6/avrgUbiX/ZoTxW8h/6W9FcVneGjcLloOQKx+edwUehOI8NIqf
+IKokqm8X1O3m3A8VQ8DASxq+QhDjAgMBAAGjggU5MIIFNTALBgNVHQ8EBAMCB4AwZwYDVR0gBGAw
+XjBcBgsrBgEEAYKoOwICATBNMEsGCCsGAQUFBwIBFj9odHRwOi8vd3d3LmVjaS5iY2UuZWMvcG9s
+aXRpY2EtY2VydGlmaWNhZG8vcGVyc29uYS1qdXJpZGljYS5wZGYwgZEGCCsGAQUFBwEBBIGEMIGB
+MD4GCCsGAQUFBzABhjJodHRwOi8vb2NzcC5lY2kuYmNlLmVjL2VqYmNhL3B1YmxpY3dlYi9zdGF0
+dXMvb2NzcDA/BggrBgEFBQcwAYYzaHR0cDovL29jc3AxLmVjaS5iY2UuZWMvZWpiY2EvcHVibGlj
+d2ViL3N0YXR1cy9vY3NwMD4GCisGAQQBgqg7AwoEMBMuVkVISUNVTE9TIFkgQ09NRVJDSU8gQVNU
+VURJTExPIFZZQ0FTVCBDSUEgTFREQTAdBgorBgEEAYKoOwMLBA8TDTAxOTAzMTIzNTYwMDEwGgYK
+KwYBBAGCqDsDAQQMEwowMTAyNDk3MTg3MBsGCisGAQQBgqg7AwIEDRMLVklDVE9SIEhVR08wGQYK
+KwYBBAGCqDsDAwQLEwlBU1RVRElMTE8wGQYKKwYBBAGCqDsDBAQLEwlBU1RVRElMTE8wHwYKKwYB
+BAGCqDsDBQQREw9HRVJFTlRFIEdFTkVSQUwwMwYKKwYBBAGCqDsDBwQlEyNBVkVOSURBIEVTUEFO
+QSAxNzk3IFkgQVZJTEEgRVNRVUlOQTAZBgorBgEEAYKoOwMIBAsTCTA3Mjg2MzUzNTAWBgorBgEE
+AYKoOwMJBAgTBkN1ZW5jYTAXBgorBgEEAYKoOwMMBAkTB0VDVUFET1IwIAYKKwYBBAGCqDsDMwQS
+ExBTT0ZUV0FSRS1BUkNISVZPMCEGA1UdEQQaMBiBFmh1Z28zMDA0NjZAaG90bWFpbC5jb20wggHf
+BgNVHR8EggHWMIIB0jCCAc6gggHKoIIBxoaB1WxkYXA6Ly9iY2VxbGRhcHN1YnAxLmJjZS5lYy9j
+bj1DUkwxNzUsY249QUMlMjBCQU5DTyUyMENFTlRSQUwlMjBERUwlMjBFQ1VBRE9SLGw9UVVJVE8s
+b3U9RU5USURBRCUyMERFJTIwQ0VSVElGSUNBQ0lPTiUyMERFJTIwSU5GT1JNQUNJT04tRUNJQkNF
+LG89QkFOQ08lMjBDRU5UUkFMJTIwREVMJTIwRUNVQURPUixjPUVDP2NlcnRpZmljYXRlUmV2b2Nh
+dGlvbkxpc3Q/YmFzZYY0aHR0cDovL3d3dy5lY2kuYmNlLmVjL0NSTC9lY2lfYmNlX2VjX2NybGZp
+bGVjb21iLmNybKSBtTCBsjELMAkGA1UEBhMCRUMxIjAgBgNVBAoTGUJBTkNPIENFTlRSQUwgREVM
+IEVDVUFET1IxNzA1BgNVBAsTLkVOVElEQUQgREUgQ0VSVElGSUNBQ0lPTiBERSBJTkZPUk1BQ0lP
+Ti1FQ0lCQ0UxDjAMBgNVBAcTBVFVSVRPMSUwIwYDVQQDExxBQyBCQU5DTyBDRU5UUkFMIERFTCBF
+Q1VBRE9SMQ8wDQYDVQQDEwZDUkwxNzUwKwYDVR0QBCQwIoAPMjAxNDExMjQxNTE0MDFagQ8yMDE1
+MTEyNDE1NDQwMVowHwYDVR0jBBgwFoAUGPnw++YyHJlmOSrKi7JpfUknv84wHQYDVR0OBBYEFEh5
+zoqtU4aywobOvrvZCE6wZjcRMAkGA1UdEwQCMAAwGQYJKoZIhvZ9B0EABAwwChsEVjguMQMCBLAw
+DQYJKoZIhvcNAQELBQADggIBAGJWgBhB8xpWREIfxzRxeTGfyQnSWj5AB9d/BAwFbTnfnsrKN6I5
+suli1arNJ3G18xucuV5tJu4hWCILXsdcMWAMD8rPWfVquAzzd/x6IcG3ZZMIkBOu0DY1vSsLXh4I
+pD7atIzjRDB6nw8juIDp3yexMeKQ2vuJnLX/2P9XaRzSsBeytLdS54kakk6xlNF9XrtoR2Pd9XI2
+CUk/wJcOW/RzfrNIPSlGvhYY617T7TkQyRoklVL1dERi5eJWttyEEaf7KSDlI4qNNGtyn9sQ7fwk
+7+Jd2ZqvTJK3Tn6MmsYUSKlcVcgdCtLU9Z80bXmey9uVsc+S5jYYhnyC8o8FmKmilScpsPqJ/oRw
+4RSyZgsEunfXAnZ05JudsQChyMexzkCxuBDGmJ9kDQLJ6ek+kGCaK7F/LJdk9HbxPekzu8k0kzYY
+YxBqelV3th1gmX8s1JDCspheX1CaRXvXFrWj02cpO1B2vIwpInPuf7FheJLxTrehOeDw3UEqKTF0
+QSmj+B0ijmsbaj2A7gudU0CtwxN5d1r+KfJ/pO5oJsNuPncu5rauVVLa6FyYmb1ita702A+ewoHI
+VtM7WiSjrklMPxaUKKxirW+aUmoj9NtYvazN8WJlyk0nk+YSXrf5VsB3By22g1qO65liVSZ2MPqY
+9K4Wc+lzm5yIe/8Xxv+sVCvi
+</ds:X509Certificate>
+</ds:X509Data>
+<ds:KeyValue>
+<ds:RSAKeyValue>
+<ds:Modulus>
+sVvqJ5PB9nLV9kUXsiwZTgmkiGDrXE5H7dYm3BCZdgV9t7TaDjRxGu+GpWKU6rKMebPVSfS6iI1H
+7Ixah+UvFhrhSgBa3Uzuf5wNI+tFS9jBazgzpwFnV6g7vLX6w40GkweA9QP3D0DJ1sbWKZJAMkj4
+ynEHfWOjZUZpUkkfzxFoNz9S3RFpRLUxSx8+54ICmvxRZ3ITHnVqqITNGgjJ9p9WtlxAesxli56b
+KWm8EwQTbMlp9AsinfGgWlo5XEjQCv44tBev2r64FG4l/2aE8VvIf+lvRXFZ3ho3C5aDkCsfnncF
+HoTiPDSKnyCqJKpvF9Tt5twPFUPAwEsavkIQ4w==
+</ds:Modulus>
+<ds:Exponent>AQAB</ds:Exponent>
+</ds:RSAKeyValue>
+</ds:KeyValue>
+</ds:KeyInfo>
+<ds:Object Id="Signature523092-Object1000259"><etsi:QualifyingProperties Target="#Signature523092"><etsi:SignedProperties Id="Signature523092-SignedProperties281525"><etsi:SignedSignatureProperties><etsi:SigningTime>2015-02-11T10:33:49-05:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>VSBXaw2ViA/m9nkZd81QRKQ97/U=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>CN=AC BANCO CENTRAL DEL ECUADOR,L=QUITO,OU=ENTIDAD DE CERTIFICACION DE INFORMACION-ECIBCE,O=BANCO CENTRAL DEL ECUADOR,C=EC</ds:X509IssuerName><ds:X509SerialNumber>1313054074</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate><etsi:SignaturePolicyIdentifier><etsi:SignaturePolicyId><etsi:SigPolicyId><etsi:Identifier>http://www.facturae.es/politica_de_firma_formato_facturae/politica_de_firma_formato_facturae_v3_1.pdf</etsi:Identifier><etsi:Description>Política de Firma FacturaE v3.1</etsi:Description></etsi:SigPolicyId><etsi:SigPolicyHash><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>Ohixl6upD6av8N7pEvDABhEL6hM=</ds:DigestValue></etsi:SigPolicyHash></etsi:SignaturePolicyId></etsi:SignaturePolicyIdentifier><etsi:SignerRole><etsi:ClaimedRoles><etsi:ClaimedRole>Rol de firma</etsi:ClaimedRole></etsi:ClaimedRoles></etsi:SignerRole></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-54761"><etsi:Description>Documento de ejemplo</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></factura>

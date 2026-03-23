@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WebUI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WebUI_ec_gob_sri_celcer_RecepcionComprobantesService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://celcer.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantes</Value>
+    </Setting>
+    <Setting Name="WebUI_ec_gob_sri_celcer1_AutorizacionComprobantesService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://celcer.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantes</Value>
+    </Setting>
+    <Setting Name="WebUI_SICE_Metodos" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://216.120.250.104/SICE/ws/Metodos.asmx</Value>
+    </Setting>
+    <Setting Name="WebUI_ec_gob_sri_cel_RecepcionComprobantesService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://cel.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantes</Value>
+    </Setting>
+    <Setting Name="WebUI_ec_gob_sri_cel1_AutorizacionComprobantesService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://cel.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantes</Value>
+    </Setting>
+    <Setting Name="WebUI_ec_gob_sri_celcerOff_RecepcionComprobantesOfflineService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://celcer.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantesOffline</Value>
+    </Setting>
+    <Setting Name="WebUI_ec_gob_sri_celOff_RecepcionComprobantesOfflineService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://cel.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantesOffline</Value>
+    </Setting>
+    <Setting Name="WebUI_ec_gob_sri_cel1Off_AutorizacionComprobantesOfflineService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://cel.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantesOffline</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

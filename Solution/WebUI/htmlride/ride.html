@@ -1,0 +1,176 @@
+﻿
+    <table style="width:100%">
+        <tr>
+            <td style="width:50%">[LOGO]</td>
+            <td rowspan="2">
+                <table style="border:1px solid Black;border-collapse:collapse; width:100%">
+                    <tr>
+                        <td>RUC</td>
+                        <td>[ruc]</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">FACTURA</td>                        
+                    </tr>
+                    <tr>
+                        <td>No.</td>
+                        <td>[numero]</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">NÚMERO AUTORIZACIÓN</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">[clave]</td>
+                    </tr>
+                    <tr>
+                        <td>FECHA Y HORA DE AUTORIZACIÓN:.</td>
+                        <td>[fecha] [hora]</td>
+                    </tr>
+                    <tr>
+                        <td>AMBIENTE.</td>
+                        <td>[ambiente]</td>
+                    </tr>
+                    <tr>
+                        <td>EMISIÓN.</td>
+                        <td>[emision]</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">CLAVE DE ACCESO</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">[barraclave]</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:50%">
+                <table style="border:1px solid Black;border-collapse:collapse;width:100%">
+                    <tr>
+                        <td colspan="2">[empresa]</td>
+                    </tr>
+                    <tr>
+                        <td>DIR. MATRIZ:</td>
+                        <td>[direccion]</td>
+                    </tr>
+                    <tr>
+                        <td>DIR. SUCURSAL:</td>
+                        <td>[direccionsuc]</td>
+                    </tr>
+                    <tr>
+                        <td>CONTRIBUYENTE ESPECIAL NRO:</td>
+                        <td>[nrocontribuyente]</td>
+                    </tr>
+                    <tr>
+                        <td>OBLIGADO A LLEVAR CONTABILIDAD:</td>
+                        <td>[obligado]</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table style="border:1px solid Black;border-collapse:collapse;width:100%;">                    
+                    <tr>
+                        <td>Razón Social/Nombres y Apellidos:</td>
+                        <td colspan="3">[nombrescli]</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha emisión:</td>
+                        <td>[fecha]</td>
+                        <td>RUC/CI:</td>
+                        <td>[ruccli]</td>
+                    </tr>
+                    <tr>
+                        <td>Dirección:</td>
+                        <td colspan="3">[direccioncli]</td>
+                    </tr>
+                    <tr>
+                        <td>Teléfono:</td>
+                        <td>[telefono]</td>
+                        <td>Email:</td>
+                        <td>[email]</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table style="border:1px solid Black;border-collapse:collapse;width:100%;">
+        <thead>
+            <tr>
+                <th style="width:10%;border:1px solid Black;border-collapse:collapse;">Código Principal</th>
+                <th style="width:10%;border:1px solid Black;border-collapse:collapse;">Cantidad</th>
+                <th style="width:50%;border:1px solid Black;border-collapse:collapse;">Descripción</th>
+                <th style="width:10%;border:1px solid Black;border-collapse:collapse;">Precio unitario</th>
+                <th style="width:10%;border:1px solid Black;border-collapse:collapse;">Descuento</th>
+                <th style="width:10%;border:1px solid Black;border-collapse:collapse;">Precio total</th>
+            </tr>
+        </thead>
+        <tbody>            
+            [body]
+        </tbody>
+    </table>
+    <table style="width:100%;">
+        <tr>
+            <td style="width:70%">
+                <table style="border:1px solid Black;border-collapse:collapse;width:100%">
+                    <tr>
+                        <td colspan="2">INFORMACIÓN ADICIONAL</td>
+                    </tr>
+                    <tr>
+                        <td>VENDEDOR:</td>
+                        <td>[vendedor]</td>
+                    </tr>
+                    <tr>
+                        <td>CIUDAD CLIENTE:</td>
+                        <td>[ciudadcli]</td>
+                    </tr>
+                    <tr>
+                        <td>FORMA DE PAGO:</td>
+                        <td>[formapago]</td>
+                    </tr>
+                    <tr>
+                        <td>TRANSPORTE:</td>
+                        <td>[transporte]</td>
+                    </tr>
+                    <tr>
+                        <td>OBSERVACIÓN:</td>
+                        <td>[observacion]</td>
+                    </tr>
+                </table>
+
+            </td>
+            <td style="width:30%">
+                <table style="border:1px solid Black;border-collapse:collapse;width:100%">                    
+                    <tr>
+                        <td style="border:1px solid Black;border-collapse:collapse;">SUBTOTAL [PORCIVA]:</td>
+                        <td style="border:1px solid Black;border-collapse:collapse;">[SUBTOTALIVA]</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid Black;border-collapse:collapse;">SUBTOTAL 0%:</td>
+                        <td style="border:1px solid Black;border-collapse:collapse;">[SUBTOTAL0]</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid Black;border-collapse:collapse;">DESCUENTO:</td>
+                        <td style="border:1px solid Black;border-collapse:collapse;">[DESCUENTO]</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid Black;border-collapse:collapse;">SUBTOTAL:</td>
+                        <td style="border:1px solid Black;border-collapse:collapse;">[SUBTOTAL]</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid Black;border-collapse:collapse;">ICE:</td>
+                        <td style="border:1px solid Black;border-collapse:collapse;">[ICE]</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid Black;border-collapse:collapse;">IVA [PORCIVA]:</td>
+                        <td style="border:1px solid Black;border-collapse:collapse;">[IVA]</td>
+                    </tr>
+                    <tr>
+                        <td style="border:1px solid Black;border-collapse:collapse;">VALOR TOTAL:</td>
+                        <td style="border:1px solid Black;border-collapse:collapse;">[TOTAL]</td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>

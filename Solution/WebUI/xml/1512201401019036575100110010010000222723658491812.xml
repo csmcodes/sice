@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<factura id="comprobante" version="1.0.0"><infoTributaria><ambiente>1</ambiente><tipoEmision>1</tipoEmision><razonSocial>INDIAN MOTOS INMOT S A</razonSocial><ruc>0190365751001</ruc><claveAcceso>1512201401019036575100110010010000222723658491812</claveAcceso><codDoc>01</codDoc><estab>001</estab><ptoEmi>001</ptoEmi><secuencial>000022272</secuencial><dirMatriz>AV. ESPANA 2-88 NUNEZ DE BONILLA</dirMatriz></infoTributaria>
+<infoFactura>
+		<fechaEmision>15/12/2014</fechaEmision>
+		<contribuyenteEspecial>263</contribuyenteEspecial>
+		<obligadoContabilidad>SI</obligadoContabilidad>
+		<tipoIdentificacionComprador>04</tipoIdentificacionComprador>
+		<razonSocialComprador>VELEZ GALARZA LORENA ESMERALDA</razonSocialComprador>		
+		<identificacionComprador>1304880576001</identificacionComprador>
+		<totalSinImpuestos>100.00</totalSinImpuestos>
+		<totalDescuento>0.00</totalDescuento>
+		<totalConImpuestos>
+			<totalImpuesto>
+				<codigo>2</codigo>
+				<codigoPorcentaje>2</codigoPorcentaje>
+				<baseImponible>100.00</baseImponible>
+				<valor>12.00</valor>
+			</totalImpuesto>
+		</totalConImpuestos>
+		<propina>0.00</propina>
+		<importeTotal>112.00</importeTotal>
+		<moneda>DOLAR</moneda>
+	</infoFactura>
+	<detalles>
+		<detalle>
+			<codigoPrincipal>TP-RVC04</codigoPrincipal>
+			<descripcion>Camara de retro montaje 2 en 1  diametro 18.5mm</descripcion>
+			<cantidad>1.00</cantidad>
+			<precioUnitario>100.00</precioUnitario>
+			<descuento>0.00</descuento>
+			<precioTotalSinImpuesto>100.00</precioTotalSinImpuesto>
+			<impuestos>
+				<impuesto>
+					<codigo>2</codigo>
+					<codigoPorcentaje>2</codigoPorcentaje>
+					<tarifa>12</tarifa>
+					<baseImponible>100.00</baseImponible>
+					<valor>12.00</valor>
+				</impuesto>
+			</impuestos>
+		</detalle>		
+	</detalles>
+</factura>

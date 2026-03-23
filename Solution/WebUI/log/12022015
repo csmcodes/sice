@@ -1,0 +1,2 @@
+12/02/2015 16:31:38,ERROR 1202201501019036575100120010130000001727980079917
+12/02/2015 16:31:38,WebUI,Referencia a objeto no establecida como instancia de un objeto.,   en WebUI.Proceso.AutorizacionComprobante(Array a, String clave, Int32 empresa) en D:\Proyectos\SICE\SolutionSICE\WebUI\clases\Proceso.cs:línea 482
