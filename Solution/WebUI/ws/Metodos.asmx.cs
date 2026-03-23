@@ -1999,7 +1999,7 @@ namespace WebUI.ws
                     string fin = ej.ae_fecha_fin.HasValue ? ej.ae_fecha_fin.Value.ToString("dd/MM HH:mm:ss") : "...";
                     html.AppendFormat("<tr>");
                     html.AppendFormat("<td>{0}</td>", ej.ae_empresa);
-                    html.AppendFormat("<td>{0}</td>", ej.ae_fecha_inicio.ToString("dd/MM HH:mm:ss"));
+                    html.AppendFormat("<td>{0}</td>", ej.ae_fecha_inicio.HasValue ? ej.ae_fecha_inicio.Value.ToString("dd/MM HH:mm:ss") : "");
                     html.AppendFormat("<td>{0}</td>", fin);
                     html.AppendFormat("<td>{0}</td>", ej.ae_procesados ?? 0);
                     html.AppendFormat("<td style='color:green'>{0}</td>", ej.ae_autorizados ?? 0);
@@ -2040,7 +2040,7 @@ namespace WebUI.ws
                 {
                     string color = log.al_resultado == "OK" ? "" : log.al_resultado == "ERROR" ? "danger" : "warning";
                     html.AppendFormat("<tr class='{0}'>", color);
-                    html.AppendFormat("<td>{0}</td>", log.al_fecha.ToString("HH:mm:ss"));
+                    html.AppendFormat("<td>{0}</td>", log.al_fecha.HasValue ? log.al_fecha.Value.ToString("HH:mm:ss") : "");
                     html.AppendFormat("<td>{0}</td>", log.al_numero_legible ?? log.al_numero);
                     html.AppendFormat("<td>{0}</td>", log.al_accion);
                     html.AppendFormat("<td>{0}</td>", log.al_resultado);

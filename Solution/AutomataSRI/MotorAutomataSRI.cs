@@ -21,7 +21,7 @@ namespace AutomataSRI
             _clasificador = ClasificadorMensajeSRI.CargarDesdeDB();
 
             List<Empresa> empresas = EmpresaBLL.GetAll(
-                new WhereParams("emp_estado = {0}", (int)Enums.EstadoEmpresa.Activa), "");
+                new WhereParams("emp_estado = {0}", 1), "");
 
             foreach (Empresa empresa in empresas)
             {
