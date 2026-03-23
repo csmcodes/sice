@@ -3611,11 +3611,13 @@
     <Content Include="olvido.html" />
     <Content Include="reports\wfReportPrint.aspx" />
     <Content Include="respuesta.htm" />
+    <Content Include="automata.htm" />
     <Content Include="robot.htm" />
     <Content Include="scripts\bootbox.min.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\contract.js" />
     <Content Include="scripts\forms\comprobante.js" />
+    <Content Include="scripts\forms\automata.js" />
     <Content Include="scripts\forms\comprobantes.js" />
     <Content Include="scripts\forms\email.js" />
     <Content Include="scripts\forms\empresa.js" />
