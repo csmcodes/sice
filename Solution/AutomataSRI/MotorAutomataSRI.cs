@@ -18,10 +18,26 @@ namespace AutomataSRI
 
         public void Ejecutar()
         {
+            _config = ConfigAutomata.Cargar();
+
+            if (_config == null)
+            {
+                Log("Sin config automatasri (par_empresa=1, par_id='automatasri'). Abortando.");
+                return;
+            }
+
+            if (!_config.activo)
+            {
+                Log("Automata inactivo en config. Abortando.");
+                return;
+            }
+
             _clasificador = ClasificadorMensajeSRI.CargarDesdeDB();
 
             List<Empresa> empresas = EmpresaBLL.GetAll(
                 new WhereParams("emp_estado = {0}", 1), "");
+
+            Log("Empresas activas: " + empresas.Count + (_config.simulacion ? " [SIMULACION]" : ""));
 
             foreach (Empresa empresa in empresas)
             {
@@ -38,19 +54,6 @@ namespace AutomataSRI
 
         private void ProcesarEmpresa(Empresa empresa)
         {
-            _config = ConfigAutomata.Cargar(empresa.emp_codigo);
-
-            if (_config == null)
-            {
-                Log("  [" + empresa.emp_codigo + "] Sin config automatasri, omitiendo.");
-                return;
-            }
-
-            if (!_config.activo)
-            {
-                Log("  [" + empresa.emp_codigo + "] Automata inactivo, omitiendo.");
-                return;
-            }
 
             _procesados = 0;
             _autorizados = 0;

@@ -137,15 +137,15 @@ INSERT INTO sri_regla_mensaje (srm_patron, srm_accion, srm_estado, srm_orden, sr
 
 
 -- ------------------------------------------------------------
--- 6. Parametro automatasri por empresa
---    Se inserta uno por cada empresa activa (emp_estado = 1)
---    simulacion: true -> arrancar siempre en modo dry run
+-- 6. Parametro automatasri - unico, en empresa 1
+--    La config se lee siempre desde par_empresa=1.
+--    simulacion: true -> arrancar en modo dry run
 --    Cambiar a false cuando este validado en produccion
 -- ------------------------------------------------------------
 
 INSERT INTO parametro (par_empresa, par_id, par_descripcion, par_tipo, par_valor, par_estado, crea_usr, crea_fecha)
-SELECT
-    emp_codigo,
+VALUES (
+    1,
     'automatasri',
     'Configuracion del Automata SRI',
     'JSON',
@@ -153,6 +153,5 @@ SELECT
     1,
     'SISTEMA',
     NOW()
-FROM empresa
-WHERE emp_estado = 1
+)
 ON CONFLICT (par_empresa, par_id) DO NOTHING;

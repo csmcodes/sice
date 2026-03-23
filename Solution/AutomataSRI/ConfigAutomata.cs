@@ -18,14 +18,14 @@ namespace AutomataSRI
         public int minutos_espera_recibido { get; set; }
         public int horas_alerta_recibido { get; set; }
 
-        public static ConfigAutomata Cargar(int empresa)
+        public static ConfigAutomata Cargar()
         {
             try
             {
                 Parametro par = ParametroBLL.GetByPK(new Parametro
                 {
-                    par_empresa = empresa,
-                    par_empresa_key = empresa,
+                    par_empresa = 1,
+                    par_empresa_key = 1,
                     par_id = "automatasri",
                     par_id_key = "automatasri"
                 });
@@ -38,7 +38,7 @@ namespace AutomataSRI
             }
             catch (Exception ex)
             {
-                AutomataSRILog.Error("ConfigAutomata.Cargar empresa=" + empresa, ex);
+                AutomataSRILog.Error("ConfigAutomata.Cargar", ex);
                 return null;
             }
         }
