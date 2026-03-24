@@ -1,6 +1,9 @@
 $(document).ready(function () {
     CargarEmpresas();
-    $("#cmbempresa").on("change", LoadAutomataData);
+    $("#cmbempresa").on("change", function () {
+        $("#logs").html("");
+        LoadAutomataData();
+    });
 });
 
 function CargarEmpresas() {
