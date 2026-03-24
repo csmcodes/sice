@@ -1,7 +1,13 @@
 $(document).ready(function () {
-    GetEmpresas();
+    CargarEmpresas();
     $("#cmbempresa").on("change", LoadAutomataData);
 });
+
+function CargarEmpresas() {
+    var obj = {};
+    var jsonText = JSON.stringify({ objeto: obj });
+    CallServerMethods(webservice + "GetEmpresas", jsonText, 3);
+}
 
 function LoadAutomataData() {
     var obj = {};
