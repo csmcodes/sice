@@ -147,7 +147,6 @@ namespace AutomataSRI
         {
             DateTime desde = DateTime.Now.AddDays(-_config.dias_atras);
             DateTime limiteRecibido = DateTime.Now.AddMinutes(-_config.minutos_espera_recibido);
-            DateTime limiteAlerta = DateTime.Now.AddHours(-_config.horas_alerta_recibido);
 
             List<Comprobante> lista = ComprobanteBLL.GetAll(new WhereParams(
                 "com_empresa = {0} AND com_estado = {1} AND com_fecha >= {2} AND com_fecharespuesta <= {3}",
@@ -163,13 +162,6 @@ namespace AutomataSRI
                 _procesados++;
                 try
                 {
-                    if (com.com_fechaenvia.HasValue && com.com_fechaenvia.Value <= limiteAlerta)
-                    {
-                        _alertas++;
-                        Log("    ALERTA " + com.com_numero + " lleva mas de " + _config.horas_alerta_recibido + "h en RECIBIDO");
-                        continue;
-                    }
-
                     if (_config.simulacion)
                     {
                         GrabarLog(com, "VERIFICAR", "SIMULACION", "Modo simulacion activo");
