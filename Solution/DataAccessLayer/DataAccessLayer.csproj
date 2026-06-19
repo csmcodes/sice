@@ -59,6 +59,7 @@
     <Compile Include="DAL.cs" />
     <Compile Include="EmpresaDAL.cs" />
     <Compile Include="FormatoDAL.cs" />
+    <Compile Include="AsappLogDAL.cs" />
     <Compile Include="AutomataEjecucionDAL.cs" />
     <Compile Include="AutomataLogDAL.cs" />
     <Compile Include="ParametroDAL.cs" />

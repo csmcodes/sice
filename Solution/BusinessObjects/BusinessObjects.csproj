@@ -64,6 +64,7 @@
     <Compile Include="Parametro.cs" />
     <Compile Include="Perfil.cs" />
     <Compile Include="Persona.cs" />
+    <Compile Include="AsappLog.cs" />
     <Compile Include="AutomataEjecucion.cs" />
     <Compile Include="AutomataLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

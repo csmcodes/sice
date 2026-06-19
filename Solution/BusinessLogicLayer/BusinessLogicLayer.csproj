@@ -59,6 +59,7 @@
     <Compile Include="CorreoBLL.cs" />
     <Compile Include="EmpresaBLL.cs" />
     <Compile Include="FormatoBLL.cs" />
+    <Compile Include="AsappLogBLL.cs" />
     <Compile Include="AutomataEjecucionBLL.cs" />
     <Compile Include="AutomataLogBLL.cs" />
     <Compile Include="ParametroBLL.cs" />
