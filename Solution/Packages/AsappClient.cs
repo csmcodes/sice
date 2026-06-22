@@ -52,7 +52,8 @@ namespace Packages
                     numeroComprobante = comprobante.com_almacen + "-" + comprobante.com_pventa + "-" + comprobante.com_secuencia,
                     fechaEmision = comprobante.com_fecha.HasValue
                         ? comprobante.com_fecha.Value.ToString("yyyy-MM-ddTHH:mm:ss") + "-05:00"
-                        : ""
+                        : "",
+                    emailCliente = comprobante.com_email ?? ""
                 };
 
                 status = Post(baseUrl + "/v1/sice/comprobantes", empresa.emp_asapp_apikey, body, comprobante.com_numero);
