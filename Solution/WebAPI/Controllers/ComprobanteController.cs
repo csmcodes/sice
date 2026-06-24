@@ -4,9 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BusinessLogicLayer;
+using BusinessObjects;
 
 namespace WebAPI.Controllers
-{    
+{
     [RoutePrefix("api/comprobante")]
     public class ComprobanteController : ApiController
     {
@@ -31,6 +33,35 @@ namespace WebAPI.Controllers
                 return Content(HttpStatusCode.ExpectationFailed, response);
             }
 
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("{claveAcceso}/estado")]
+        public IHttpActionResult GetEstado(string claveAcceso)
+        {
+            try
+            {
+                List<Comprobante> comprobantes = ComprobanteBLL.GetAll(new WhereParams("com_numero={0}", claveAcceso), "");
+                if (comprobantes.Count == 0)
+                    return NotFound();
+
+                Comprobante c = comprobantes[0];
+                var response = new Models.ComprobanteEstadoResponse
+                {
+                    claveAcceso       = c.com_numero,
+                    numeroComprobante = c.com_almacen + "-" + c.com_pventa + "-" + c.com_secuencia,
+                    estado            = Services.Enums.GetEstadoComprobante(c.com_estado),
+                    fechaAutorizacion = string.IsNullOrEmpty(c.com_fechaautorizacion) ? null : c.com_fechaautorizacion,
+                    numeroAutorizacion = string.IsNullOrEmpty(c.com_autorizacion) ? null : c.com_autorizacion,
+                    mensaje           = string.IsNullOrEmpty(c.com_mensaje) ? null : c.com_mensaje
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.InternalServerError, ex.Message);
+            }
         }
     }
 }
