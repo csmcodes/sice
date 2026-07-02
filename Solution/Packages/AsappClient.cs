@@ -51,7 +51,9 @@ namespace Packages
                     claveAcceso = comprobante.com_numero,
                     numeroComprobante = comprobante.com_almacen + "-" + comprobante.com_pventa + "-" + comprobante.com_secuencia,
                     fechaEmision = comprobante.com_fecha.HasValue
-                        ? comprobante.com_fecha.Value.ToString("yyyy-MM-ddTHH:mm:ss") + "-05:00"
+                        ? comprobante.com_fecha.Value.Date
+                            .Add(comprobante.crea_fecha.HasValue ? comprobante.crea_fecha.Value.TimeOfDay : TimeSpan.Zero)
+                            .ToString("yyyy-MM-ddTHH:mm:ss") + "-05:00"
                         : "",
                     emailCliente = comprobante.com_email ?? ""
                 };
