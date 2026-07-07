@@ -21,6 +21,8 @@ namespace BusinessObjects
         public Int32? asl_httpstatus { get; set; }
         public DateTime? asl_fecha { get; set; }
         public String asl_error { get; set; }
+        public String asl_direccion { get; set; }
+        public String asl_payload { get; set; }
 
         #endregion
 
@@ -30,7 +32,7 @@ namespace BusinessObjects
         {
         }
 
-        public AsappLog(Int32 asl_id, Int32 asl_empresa, String asl_claveacceso, String asl_endpoint, String asl_estado, Int32? asl_httpstatus, DateTime? asl_fecha, String asl_error)
+        public AsappLog(Int32 asl_id, Int32 asl_empresa, String asl_claveacceso, String asl_endpoint, String asl_estado, Int32? asl_httpstatus, DateTime? asl_fecha, String asl_error, String asl_direccion, String asl_payload)
         {
             this.asl_id = asl_id;
             this.asl_empresa = asl_empresa;
@@ -40,6 +42,8 @@ namespace BusinessObjects
             this.asl_httpstatus = asl_httpstatus;
             this.asl_fecha = asl_fecha;
             this.asl_error = asl_error;
+            this.asl_direccion = asl_direccion;
+            this.asl_payload = asl_payload;
         }
 
         public AsappLog(IDataReader reader)
@@ -52,6 +56,8 @@ namespace BusinessObjects
             this.asl_httpstatus = (reader["asl_httpstatus"] != DBNull.Value) ? (Int32?)reader["asl_httpstatus"] : null;
             this.asl_fecha = (reader["asl_fecha"] != DBNull.Value) ? (DateTime?)reader["asl_fecha"] : null;
             this.asl_error = reader["asl_error"].ToString();
+            this.asl_direccion = HasColumn(reader, "asl_direccion") && reader["asl_direccion"] != DBNull.Value ? reader["asl_direccion"].ToString() : null;
+            this.asl_payload = HasColumn(reader, "asl_payload") && reader["asl_payload"] != DBNull.Value ? reader["asl_payload"].ToString() : null;
         }
 
         public AsappLog(object objeto)
@@ -67,6 +73,8 @@ namespace BusinessObjects
                 object asl_httpstatus = null;
                 object asl_fecha = null;
                 object asl_error = null;
+                object asl_direccion = null;
+                object asl_payload = null;
 
                 tmp.TryGetValue("asl_id", out asl_id);
                 tmp.TryGetValue("asl_empresa", out asl_empresa);
@@ -76,6 +84,8 @@ namespace BusinessObjects
                 tmp.TryGetValue("asl_httpstatus", out asl_httpstatus);
                 tmp.TryGetValue("asl_fecha", out asl_fecha);
                 tmp.TryGetValue("asl_error", out asl_error);
+                tmp.TryGetValue("asl_direccion", out asl_direccion);
+                tmp.TryGetValue("asl_payload", out asl_payload);
 
                 this.asl_id = (Int32)Conversiones.GetValueByType(asl_id, typeof(Int32));
                 this.asl_empresa = (Int32)Conversiones.GetValueByType(asl_empresa, typeof(Int32));
@@ -85,6 +95,8 @@ namespace BusinessObjects
                 this.asl_httpstatus = (Int32?)Conversiones.GetValueByType(asl_httpstatus, typeof(Int32?));
                 this.asl_fecha = (DateTime?)Conversiones.GetValueByType(asl_fecha, typeof(DateTime?));
                 this.asl_error = (String)Conversiones.GetValueByType(asl_error, typeof(String));
+                this.asl_direccion = (String)Conversiones.GetValueByType(asl_direccion, typeof(String));
+                this.asl_payload = (String)Conversiones.GetValueByType(asl_payload, typeof(String));
             }
         }
 
@@ -95,6 +107,14 @@ namespace BusinessObjects
         public PropertyInfo[] GetProperties()
         {
             return this.GetType().GetProperties();
+        }
+
+        private static bool HasColumn(IDataReader reader, string columnName)
+        {
+            for (int i = 0; i < reader.FieldCount; i++)
+                if (reader.GetName(i).Equals(columnName, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            return false;
         }
 
         #endregion

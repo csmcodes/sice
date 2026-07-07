@@ -212,6 +212,94 @@ namespace Packages
         }
 
         // ----------------------------------------------------------------
+        // Modo delegado — Asapp firma/envía/gestiona con el SRI
+        // ----------------------------------------------------------------
+
+        public class AsappDelegadoResult
+        {
+            public bool Exito { get; set; }
+            public int HttpStatus { get; set; }
+            public string Error { get; set; }
+        }
+
+        public static bool IsDelegado(Empresa empresa)
+        {
+            return IsActive(empresa) && empresa.emp_asapp_modo == (int)Enums.AsappModo.DELEGADO;
+        }
+
+        public static AsappDelegadoResult EnviarDelegado(Comprobante comprobante, byte[] xmlSinFirmarBytes)
+        {
+            var resultado = new AsappDelegadoResult();
+            int status = 0;
+            string error = null;
+            try
+            {
+                Empresa empresa = GetEmpresa(comprobante.com_empresa);
+                if (!IsDelegado(empresa))
+                {
+                    resultado.Exito = false;
+                    resultado.Error = "Empresa no esta en modo delegado";
+                    return resultado;
+                }
+
+                string baseUrl = GetBaseUrl();
+                if (baseUrl == null)
+                {
+                    resultado.Exito = false;
+                    resultado.Error = "Sin configuracion baseUrl";
+                    return resultado;
+                }
+
+                string xmlBase64 = xmlSinFirmarBytes != null && xmlSinFirmarBytes.Length > 0
+                    ? Convert.ToBase64String(xmlSinFirmarBytes)
+                    : "";
+
+                var body = new
+                {
+                    xmlSinFirmarBase64 = xmlBase64,
+                    tipoDocumento = comprobante.com_numero != null && comprobante.com_numero.Length >= 10
+                        ? comprobante.com_numero.Substring(8, 2)
+                        : "",
+                    ambiente = comprobante.com_ambiente == (int)Enums.Ambiente.PRODUCCIÓN
+                        ? "Produccion"
+                        : "Pruebas",
+                    claveAcceso = comprobante.com_numero,
+                    numeroComprobante = comprobante.com_almacen + "-" + comprobante.com_pventa + "-" + comprobante.com_secuencia,
+                    fechaEmision = comprobante.com_fecha.HasValue
+                        ? comprobante.com_fecha.Value.Date
+                            .Add(comprobante.crea_fecha.HasValue ? comprobante.crea_fecha.Value.TimeOfDay : TimeSpan.Zero)
+                            .ToString("yyyy-MM-ddTHH:mm:ss") + "-05:00"
+                        : "",
+                    emailCliente = comprobante.com_email ?? ""
+                };
+
+                status = Post(baseUrl + "/v1/sice/comprobantes/delegados", empresa.emp_asapp_apikey, body, comprobante.com_numero);
+                resultado.HttpStatus = status;
+                if (status == 0) { error = "Sin respuesta (red/timeout)"; resultado.Exito = false; }
+                else if (status >= 400) { error = "HTTP " + status; resultado.Exito = false; }
+                else resultado.Exito = true;
+                resultado.Error = error;
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+                resultado.Exito = false;
+                resultado.Error = error;
+                ExceptionHandling.Log.AddLog("ASAPP EnviarDelegado ERROR " + comprobante.com_numero + ": " + ex.Message);
+            }
+            finally
+            {
+                WriteLog(comprobante.com_empresa, comprobante.com_numero, "Delegado", "EnviadoAsapp", status > 0 ? status : (int?)null, error, "OUT");
+            }
+            return resultado;
+        }
+
+        public static void LogResultadoRecibido(int empresa, string claveAcceso, string resultado, string error, string payloadJson)
+        {
+            WriteLog(empresa, claveAcceso, "ResultadoDelegado", resultado, null, error, "IN", payloadJson);
+        }
+
+        // ----------------------------------------------------------------
         // HTTP helpers — retornan el código HTTP, 0 si falla la red
         // ----------------------------------------------------------------
 
@@ -284,7 +372,7 @@ namespace Packages
         // Auditoría — escribe en asapp_log, nunca lanza
         // ----------------------------------------------------------------
 
-        private static void WriteLog(int empresa, string claveAcceso, string endpoint, string estado, int? httpStatus, string error)
+        private static void WriteLog(int empresa, string claveAcceso, string endpoint, string estado, int? httpStatus, string error, string direccion = "OUT", string payload = null)
         {
             try
             {
@@ -296,7 +384,9 @@ namespace Packages
                     asl_estado      = estado,
                     asl_httpstatus  = httpStatus,
                     asl_fecha       = DateTime.Now,
-                    asl_error       = error
+                    asl_error       = error,
+                    asl_direccion   = direccion,
+                    asl_payload     = payload != null && payload.Length > 2000 ? payload.Substring(0, 2000) : payload
                 });
             }
             catch

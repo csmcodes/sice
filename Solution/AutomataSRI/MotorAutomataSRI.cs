@@ -71,10 +71,18 @@ namespace AutomataSRI
 
             LimpiarLogsAntiguos(empresa.emp_codigo);
 
-            ProcesarEnviados(empresa.emp_codigo);
-            ProcesarRecibidos(empresa.emp_codigo);
-            ProcesarDevueltos(empresa.emp_codigo);
-            ProcesarNoAutorizados(empresa.emp_codigo);
+            if (AsappClient.IsDelegado(empresa))
+            {
+                Log("  Empresa delegada a Asapp: se omite procesamiento directo SRI.");
+                ProcesarPendientesDelegado(empresa);
+            }
+            else
+            {
+                ProcesarEnviados(empresa.emp_codigo);
+                ProcesarRecibidos(empresa.emp_codigo);
+                ProcesarDevueltos(empresa.emp_codigo);
+                ProcesarNoAutorizados(empresa.emp_codigo);
+            }
 
             ejecucion.ae_id = _ejecucionId;
             ejecucion.ae_id_key = _ejecucionId;
@@ -228,6 +236,75 @@ namespace AutomataSRI
             {
                 _procesados++;
                 ProcesarSegunMensaje(com, (int)Enums.EstadoComprobante.NOAUTORIZADO);
+            }
+        }
+
+        // -------------------------------------------------------
+        // DELEGADAS A ASAPP: reintentar solo el hand-off, alertar espera
+        // -------------------------------------------------------
+        private void ProcesarPendientesDelegado(Empresa empresa)
+        {
+            DateTime desde = DateTime.Now.AddDays(-_config.dias_atras);
+            DateTime limiteHandoff = DateTime.Now.AddMinutes(-_config.minutos_espera_enviado);
+
+            List<Comprobante> pendientesHandoff = ComprobanteBLL.GetAll(new WhereParams(
+                "com_empresa = {0} AND com_estado IN ({1},{2}) AND com_fecha >= {3} AND (com_fechaultimointento IS NULL OR com_fechaultimointento <= {4}) AND (com_reintentos IS NULL OR com_reintentos < {5})",
+                empresa.emp_codigo,
+                (int)Enums.EstadoComprobante.PROCESO,
+                (int)Enums.EstadoComprobante.GRABADO,
+                desde,
+                limiteHandoff,
+                _config.max_reintentos_enviado), "");
+
+            Log("  Pendientes hand-off Asapp: " + pendientesHandoff.Count);
+
+            foreach (Comprobante com in pendientesHandoff)
+            {
+                int reintento = (com.com_reintentos ?? 0) + 1;
+                _procesados++;
+                try
+                {
+                    if (_config.simulacion)
+                    {
+                        GrabarLog(com, "HANDOFF_ASAPP", "SIMULACION", "Modo simulacion activo");
+                        continue;
+                    }
+
+                    Log("    " + com.com_numero + " hand-off reintento=" + reintento);
+                    Offline.SendComprobanteSync(com);
+
+                    var comActual = RecargarComprobante(com);
+                    ActualizarReintentos(comActual, reintento);
+
+                    string resultado = reintento >= _config.max_reintentos_enviado ? "LIMITE" : "OK";
+                    if (comActual.com_estado == (int)Enums.EstadoComprobante.DELEGADOASAPP)
+                        resultado = "OK";
+
+                    GrabarLog(com, "HANDOFF_ASAPP", resultado, comActual.com_mensaje, comActual.com_estado);
+                }
+                catch (Exception ex)
+                {
+                    AutomataSRILog.Error("ProcesarPendientesDelegado handoff " + com.com_numero, ex);
+                    GrabarLog(com, "HANDOFF_ASAPP", "ERROR", ex.Message);
+                }
+            }
+
+            DateTime limiteAlerta = DateTime.Now.AddHours(-_config.horas_alerta_recibido);
+            List<Comprobante> esperandoAsapp = ComprobanteBLL.GetAll(new WhereParams(
+                "com_empresa = {0} AND com_estado = {1} AND com_fecha >= {2} AND com_fechaenvia <= {3}",
+                empresa.emp_codigo,
+                (int)Enums.EstadoComprobante.DELEGADOASAPP,
+                desde,
+                limiteAlerta), "");
+
+            Log("  Esperando callback Asapp (alerta): " + esperandoAsapp.Count);
+
+            foreach (Comprobante com in esperandoAsapp)
+            {
+                _procesados++;
+                _alertas++;
+                Log("    ESPERA_ASAPP " + com.com_numero + " sin resultado de Asapp hace mas de " + _config.horas_alerta_recibido + "h");
+                GrabarLog(com, "ESPERA_ASAPP", "ALERTA", "Sin callback de Asapp dentro del tiempo esperado");
             }
         }
 
