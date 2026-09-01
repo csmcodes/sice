@@ -2268,6 +2268,15 @@ namespace Services
                     phrase.SetLeading(0, lineheight);
                     tdinfoadi.AddCell(new PdfPCell(phrase) { BorderWidthTop = 0, BorderWidthBottom = 0, Colspan = 2 });
 
+                    if (!string.IsNullOrEmpty(comp.com_placa))
+                    {
+                        phrase = new Phrase();
+                        phrase.Add(new Chunk("Placa:", _boldFont));
+                        phrase.Add(new Chunk(comp.com_placa, _standardFont));
+                        phrase.SetLeading(0, lineheight);
+                        tdinfoadi.AddCell(new PdfPCell(phrase) { BorderWidthTop = 0, BorderWidthBottom = 0, Colspan = 2 });
+                    }
+
                     foreach (string item in comp.com_adicionales)
                     {
                         if (!string.IsNullOrEmpty(item))
@@ -2280,7 +2289,7 @@ namespace Services
                             tdinfoadi.AddCell(new PdfPCell(phrase) { BorderWidthTop = 0, BorderWidthBottom = 0, Colspan = 2 });
                         }
 
-                      
+
                     }
                     phrase = new Phrase();
                     phrase.Add(new Chunk("Observación:", _boldFont));
@@ -2333,7 +2342,14 @@ namespace Services
                     phrase.SetLeading(0, lineheight);
                     tdinfoadi.AddCell(new PdfPCell(phrase) { BorderWidthTop = 0, BorderWidthBottom = 0, Colspan = 2 });
 
-                   
+                    if (!string.IsNullOrEmpty(comp.com_placa))
+                    {
+                        phrase = new Phrase();
+                        phrase.Add(new Chunk("Placa:", _boldFont));
+                        phrase.Add(new Chunk(comp.com_placa, _standardFont));
+                        phrase.SetLeading(0, lineheight);
+                        tdinfoadi.AddCell(new PdfPCell(phrase) { BorderWidthTop = 0, BorderWidthBottom = 0, Colspan = 2 });
+                    }
 
                     foreach (string item in comp.com_adicionales)
                     {

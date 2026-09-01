@@ -283,6 +283,7 @@ namespace Packages
                     }
                     comprobante.com_adicionales = adicionales;
 
+                    comprobante.com_placa = GetString(xmldoc.SelectSingleNode("/factura/infoFactura/placa"));
 
                     /*PAGOS*/
                     XmlNode pagos = xmldoc.SelectSingleNode("/factura/infoFactura/pagos");
