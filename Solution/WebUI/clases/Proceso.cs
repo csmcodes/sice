@@ -311,6 +311,8 @@ namespace WebUI
             XmlDocument xmldoc = new XmlDocument();
             xmldoc.LoadXml(xml);
 
+            Packages.General.AsegurarCampoAdicionalRucProveedor(xmldoc);
+            xml = Packages.General.SerializarXml(xmldoc);
 
             XmlNode xmlcla = null;
             XmlNode xmlruc=null;

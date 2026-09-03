@@ -921,13 +921,19 @@ namespace Packages
             Archivo archivo = ArchivoBLL.GetByPK(new Archivo { arc_numero = numero, arc_numero_key = numero, arc_empresa = empresa, arc_empresa_key = empresa });
             string path = Constantes.GetParameter("pathfiles");
             string pathxml = path + "\\temp\\" + numero + "_" + empresa + ".xml";
+
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.LoadXml(archivo.arc_xml);
+            General.AsegurarCampoAdicionalRucProveedor(xmldoc);
+            string xmlCorregido = General.SerializarXml(xmldoc);
+
             if (File.Exists(pathxml))
                 File.Delete(pathxml);
-            // Create a file to write to. 
+            // Create a file to write to.
             using (StreamWriter sw = File.CreateText(pathxml))
             {
                 //sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-                sw.Write(archivo.arc_xml);
+                sw.Write(xmlCorregido);
                 sw.Flush();
                 sw.Close();
             }
