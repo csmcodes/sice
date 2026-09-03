@@ -320,7 +320,15 @@ namespace WebUI.ws
                 formato = 1;
             //if (string.IsNullOrEmpty(formato))
             //    formato = "1";
-            return Proceso.RecibirComprobante(xml,mail,formato.Value);
+            try
+            {
+                return Proceso.RecibirComprobante(xml, mail, formato.Value);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.Log.AddLog(ex);
+                throw;
+            }
         }
 
         [WebMethod]
