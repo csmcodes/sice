@@ -17,7 +17,8 @@ namespace Services
             AUTORIZADO = 5,
             NOAUTORIZADO = 6,
             ANULADO = 7,
-            ELIMINADO = 8
+            ELIMINADO = 8,
+            DELEGADOASAPP = 9
 
         }
 
@@ -42,7 +43,15 @@ namespace Services
                 retorno = EstadoComprobante.ANULADO.ToString();
             if (estado == (int)EstadoComprobante.ELIMINADO)
                 retorno = EstadoComprobante.ELIMINADO.ToString();
+            if (estado == (int)EstadoComprobante.DELEGADOASAPP)
+                retorno = EstadoComprobante.DELEGADOASAPP.ToString();
             return retorno;
+        }
+
+        public enum AsappModo
+        {
+            SHADOW = 1,
+            DELEGADO = 2
         }
 
 

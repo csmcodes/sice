@@ -103,7 +103,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClaveModel.cs" />
+    <Compile Include="Models\ComprobanteEstadoResponse.cs" />
+    <Compile Include="Models\ComprobanteResultadoModel.cs" />
     <Compile Include="Models\EnvioModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

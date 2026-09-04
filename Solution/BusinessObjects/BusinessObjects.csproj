@@ -64,7 +64,11 @@
     <Compile Include="Parametro.cs" />
     <Compile Include="Perfil.cs" />
     <Compile Include="Persona.cs" />
+    <Compile Include="AsappLog.cs" />
+    <Compile Include="AutomataEjecucion.cs" />
+    <Compile Include="AutomataLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SriReglaMensaje.cs" />
     <Compile Include="Subdetalle.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Usuarioxempresa.cs" />

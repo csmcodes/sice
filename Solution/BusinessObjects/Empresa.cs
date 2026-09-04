@@ -26,6 +26,9 @@ namespace BusinessObjects
         public String emp_logo { get; set; }
         public String emp_agenteret { get; set; }
         public Int32? emp_funcion { get; set; }
+        public Int32? emp_asapp_activo { get; set; }
+        public String emp_asapp_apikey { get; set; }
+        public Int32? emp_asapp_modo { get; set; }
         public String crea_usr { get; set; }
         public DateTime? crea_fecha { get; set; }
         public String mod_usr { get; set; }
@@ -72,6 +75,9 @@ namespace BusinessObjects
             this.emp_logo= reader["emp_logo"].ToString();
             this.emp_agenteret= reader["emp_agenteret"].ToString();
             this.emp_funcion = (reader["emp_funcion"] != DBNull.Value) ? (Int32?)reader["emp_funcion"] : null;
+            this.emp_asapp_activo = HasColumn(reader, "emp_asapp_activo") && reader["emp_asapp_activo"] != DBNull.Value ? (Int32?)reader["emp_asapp_activo"] : null;
+            this.emp_asapp_apikey = HasColumn(reader, "emp_asapp_apikey") ? reader["emp_asapp_apikey"].ToString() : null;
+            this.emp_asapp_modo = HasColumn(reader, "emp_asapp_modo") && reader["emp_asapp_modo"] != DBNull.Value ? (Int32?)reader["emp_asapp_modo"] : null;
             this.crea_usr = reader["crea_usr"].ToString();
             this.crea_fecha = (reader["crea_fecha"] != DBNull.Value) ? (DateTime?)reader["crea_fecha"] : null;
             this.mod_usr = reader["mod_usr"].ToString();
@@ -96,6 +102,9 @@ namespace BusinessObjects
                 object emp_logo = null;
                 object emp_funcion = null;
                 object emp_agenteret = null;
+                object emp_asapp_activo = null;
+                object emp_asapp_apikey = null;
+                object emp_asapp_modo = null;
                 object crea_usr = null;
                 object crea_fecha = null;
                 object mod_usr = null;
@@ -113,6 +122,9 @@ namespace BusinessObjects
                 tmp.TryGetValue("emp_logo", out emp_logo);
                 tmp.TryGetValue("emp_agenteret", out emp_agenteret);
                 tmp.TryGetValue("emp_funcion", out emp_funcion);
+                tmp.TryGetValue("emp_asapp_activo", out emp_asapp_activo);
+                tmp.TryGetValue("emp_asapp_apikey", out emp_asapp_apikey);
+                tmp.TryGetValue("emp_asapp_modo", out emp_asapp_modo);
                 tmp.TryGetValue("crea_usr", out crea_usr);
                 tmp.TryGetValue("crea_fecha", out crea_fecha);
                 tmp.TryGetValue("mod_usr", out mod_usr);
@@ -130,6 +142,9 @@ namespace BusinessObjects
                 this.emp_agenteret = (String)Conversiones.GetValueByType(emp_agenteret, typeof(String));
                 this.emp_logo = (String)Conversiones.GetValueByType(emp_logo, typeof(String));
                 this.emp_funcion = (Int32?)Conversiones.GetValueByType(emp_funcion, typeof(Int32?));
+                this.emp_asapp_activo = (Int32?)Conversiones.GetValueByType(emp_asapp_activo, typeof(Int32?));
+                this.emp_asapp_apikey = (String)Conversiones.GetValueByType(emp_asapp_apikey, typeof(String));
+                this.emp_asapp_modo = (Int32?)Conversiones.GetValueByType(emp_asapp_modo, typeof(Int32?));
                 this.crea_usr = (String)Conversiones.GetValueByType(crea_usr, typeof(String));
                 this.crea_fecha = (DateTime?)Conversiones.GetValueByType(crea_fecha, typeof(DateTime?));
                 this.mod_usr = (String)Conversiones.GetValueByType(mod_usr, typeof(String));
@@ -143,6 +158,14 @@ namespace BusinessObjects
         public PropertyInfo[] GetProperties()
         {
             return this.GetType().GetProperties();
+        }
+
+        private static bool HasColumn(IDataReader reader, string columnName)
+        {
+            for (int i = 0; i < reader.FieldCount; i++)
+                if (reader.GetName(i).Equals(columnName, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            return false;
         }
         #endregion
 

@@ -16,6 +16,63 @@ namespace Packages
     public class General
     {
 
+        private static string _rucProveedorFacturacionCache = null;
+        private static readonly object _rucProveedorFacturacionLock = new object();
+
+        private static string ObtenerRucProveedorFacturacion()
+        {
+            if (_rucProveedorFacturacionCache == null)
+            {
+                lock (_rucProveedorFacturacionLock)
+                {
+                    if (_rucProveedorFacturacionCache == null)
+                        _rucProveedorFacturacionCache = Constantes.GetParameter("rucProveedorFacturacion");
+                }
+            }
+            return _rucProveedorFacturacionCache;
+        }
+
+        public static void AsegurarCampoAdicionalRucProveedor(XmlDocument xmldoc)
+        {
+            const string nombreCampo = "RUC Proveedor";
+            XmlElement root = xmldoc.DocumentElement;
+            XmlNode infoAdicional = null;
+            foreach (XmlNode hijo in root.ChildNodes)
+                if (hijo.LocalName == "infoAdicional")
+                {
+                    infoAdicional = hijo;
+                    break;
+                }
+
+            if (infoAdicional != null)
+            {
+                foreach (XmlNode campo in infoAdicional.ChildNodes)
+                    if (campo.Attributes != null && campo.Attributes["nombre"] != null && campo.Attributes["nombre"].Value == nombreCampo)
+                        return;
+            }
+            else
+            {
+                infoAdicional = xmldoc.CreateElement("infoAdicional", root.NamespaceURI);
+                root.AppendChild(infoAdicional);
+            }
+
+            XmlElement campoAdicional = xmldoc.CreateElement("campoAdicional");
+            campoAdicional.SetAttribute("nombre", nombreCampo);
+            campoAdicional.InnerText = ObtenerRucProveedorFacturacion();
+            infoAdicional.AppendChild(campoAdicional);
+        }
+
+        public static string SerializarXml(XmlDocument xmldoc)
+        {
+            XmlWriterSettings settings = new XmlWriterSettings { Encoding = new UTF8Encoding(false), OmitXmlDeclaration = false };
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (XmlWriter writer = XmlWriter.Create(ms, settings))
+                    xmldoc.Save(writer);
+                return Encoding.UTF8.GetString(ms.ToArray());
+            }
+        }
+
         public static List<Comprobante> GetFaltantes(int empresa, string almacen, string pventa, string secuencia, string cliente, int? ambiente, DateTime? desde, DateTime? hasta)
         {
 

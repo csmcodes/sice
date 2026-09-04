@@ -62,6 +62,10 @@ namespace Packages
 
         public static string SendComprobante(Comprobante comprobante)
         {
+            Empresa empresaDelegado = EmpresaBLL.GetByPK(new Empresa { emp_codigo = comprobante.com_empresa, emp_codigo_key = comprobante.com_empresa });
+            if (AsappClient.IsDelegado(empresaDelegado))
+                return EnviarADelegadoAsapp(comprobante);
+
             SingComprobante(comprobante);
             string path = Constantes.GetParameter("pathfiles");
             string pathxml = path + "\\temp\\" + comprobante.com_numero + "_" + comprobante.com_empresa + ".xml";
@@ -75,7 +79,7 @@ namespace Packages
                 buff = br.ReadBytes((int)numBytes);
 
                 ServicePointManager.Expect100Continue = true;
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
 
                 if (comprobante.com_ambiente == (int)Enums.Ambiente.PRUEBAS)
                 {
@@ -110,7 +114,7 @@ namespace Packages
                 comprobante.com_empresa_key = comprobante.com_empresa;
                 ComprobanteBLL.Update(comprobante);
 
-
+                AsappClient.NotificarEnviado(comprobante);
 
                 br.Close();
                 br.Dispose();
@@ -127,6 +131,101 @@ namespace Packages
 
 
 
+        }
+
+        public static void SendComprobanteSync(Comprobante comprobante)
+        {
+            Empresa empresaDelegado = EmpresaBLL.GetByPK(new Empresa { emp_codigo = comprobante.com_empresa, emp_codigo_key = comprobante.com_empresa });
+            if (AsappClient.IsDelegado(empresaDelegado))
+            {
+                EnviarADelegadoAsapp(comprobante);
+                return;
+            }
+
+            SingComprobante(comprobante);
+            string path = Constantes.GetParameter("pathfiles");
+            string pathxml = path + "\\temp\\" + comprobante.com_numero + "_" + comprobante.com_empresa + ".xml";
+
+            byte[] buff = null;
+            FileStream fs = new FileStream(pathxml, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            long numBytes = new FileInfo(pathxml).Length;
+            buff = br.ReadBytes((int)numBytes);
+            br.Close();
+            br.Dispose();
+            fs.Close();
+            fs.Dispose();
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
+
+            object[] result = null;
+            if (comprobante.com_ambiente == (int)Enums.Ambiente.PRUEBAS)
+            {
+                RecepcionComprobantesPruebas.RecepcionComprobantesOfflineService svc = new RecepcionComprobantesPruebas.RecepcionComprobantesOfflineService();
+                result = svc.validarComprobante(buff);
+            }
+            else if (comprobante.com_ambiente == (int)Enums.Ambiente.PRODUCCIÓN)
+            {
+                RecepcionComprobantesProduccion.RecepcionComprobantesOfflineService svc = new RecepcionComprobantesProduccion.RecepcionComprobantesOfflineService();
+                result = svc.validarComprobante(buff);
+            }
+
+            if (result != null && result.Length > 0)
+            {
+                AsappClient.NotificarEnviado(comprobante);
+                ValidarComprobante((Array)result[0], comprobante.com_numero, comprobante.com_empresa, sync: true);
+            }
+        }
+
+        public static string EnviarADelegadoAsapp(Comprobante comprobante)
+        {
+            string path = Constantes.GetParameter("pathfiles");
+            string pathxml = path + "\\temp\\" + comprobante.com_numero + "_" + comprobante.com_empresa + ".xml";
+            try
+            {
+                byte[] buff = File.ReadAllBytes(pathxml);
+                AsappClient.AsappDelegadoResult resultado = AsappClient.EnviarDelegado(comprobante, buff);
+
+                if (resultado.Exito)
+                {
+                    comprobante.com_estado = (int)Enums.EstadoComprobante.DELEGADOASAPP;
+                    comprobante.com_fechaenvia = DateTime.Now;
+                    comprobante.com_numero_key = comprobante.com_numero;
+                    comprobante.com_empresa_key = comprobante.com_empresa;
+                    ComprobanteBLL.Update(comprobante);
+                    return "enviada_asapp";
+                }
+
+                ExceptionHandling.Log.AddLog("ASAPP delegado: fallo entrega " + comprobante.com_numero + " HTTP=" + resultado.HttpStatus + " " + resultado.Error);
+                return "no_enviada_asapp";
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.Log.AddExepcion(ex);
+                return "no_enviada_asapp";
+            }
+        }
+
+        public static void VerifyComprobanteSync(Comprobante comprobante)
+        {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
+
+            object[] result = null;
+            if (comprobante.com_ambiente == (int)Enums.Ambiente.PRUEBAS)
+            {
+                AutorizacionComprobantesPruebas.AutorizacionComprobantesOfflineService svc = new AutorizacionComprobantesPruebas.AutorizacionComprobantesOfflineService();
+                result = svc.autorizacionComprobante(comprobante.com_numero);
+            }
+            else if (comprobante.com_ambiente == (int)Enums.Ambiente.PRODUCCIÓN)
+            {
+                AutorizacionComprobantesProduccion.AutorizacionComprobantesOfflineService svc = new AutorizacionComprobantesProduccion.AutorizacionComprobantesOfflineService();
+                result = svc.autorizacionComprobante(comprobante.com_numero);
+            }
+
+            if (result != null && result.Length > 0)
+                AutorizacionComprobante((Array)result[0], comprobante.com_numero, comprobante.com_empresa);
         }
 
         static void Produccion_validarComprobanteCompleted(object sender, RecepcionComprobantesProduccion.validarComprobanteCompletedEventArgs e)
@@ -157,7 +256,7 @@ namespace Packages
             }
         }
 
-        public static void ValidarComprobante(Array a, string clave, int empresa)
+        public static void ValidarComprobante(Array a, string clave, int empresa, bool sync = false)
         {
             XmlNode[] nodos = (XmlNode[])a.GetValue(0);
 
@@ -193,9 +292,16 @@ namespace Packages
                 ArchivoBLL.Update(arc);
 
                 if (comprobante.com_estado == (int)Enums.EstadoComprobante.RECIBIDO)
+                    AsappClient.NotificarRecibido(comprobante);
+                else
+                    AsappClient.NotificarDevuelto(comprobante);
+
+                if (comprobante.com_estado == (int)Enums.EstadoComprobante.RECIBIDO)
                 {
-                    CorreoComprobanteAsync(comprobante, comprobante.crea_usr, true);
-                    VerifyComprobanteAsync(comprobante);
+                    if (sync)
+                        VerifyComprobanteSync(comprobante);
+                    else
+                        VerifyComprobanteAsync(comprobante);
                 }
 
                 //Services.Pdf.SavePDF(comprobante.com_empresa, comprobante.com_numero, HttpContext.Current.Server.MapPath("../pdf"), false, "");
@@ -224,7 +330,7 @@ namespace Packages
         public static string VerifyComprobante(Comprobante comprobante)
         {
             ServicePointManager.Expect100Continue = true;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
 
             if (comprobante.com_ambiente == (int)Enums.Ambiente.PRUEBAS)
             {
@@ -320,27 +426,15 @@ namespace Packages
                         arc.arc_numero_key = arc.arc_numero;
                         ArchivoBLL.Update(arc);
 
+                        if (comprobante.com_estado == (int)Enums.EstadoComprobante.AUTORIZADO)
+                            AsappClient.NotificarAutorizado(comprobante, arc.arc_xmlrespuesta);
+                        else
+                            AsappClient.NotificarNoAutorizado(comprobante);
 
-                        //if (comprobante.com_estado == (int)Enums.EstadoComprobante.AUTORIZADO)
-                        //{
-                        //    string xmlpath = HttpContext.Current.Server.MapPath("../xml/" + comprobante.com_numero + ".xml");
-                        //    if (File.Exists(xmlpath))
-                        //        File.Delete(xmlpath);
-                        //    using (StreamWriter sw = File.CreateText(xmlpath))
-                        //    {
-                        //        sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-                        //        sw.Write(nodoautorizaciones.InnerXml);
-                        //        sw.Flush();
-                        //        sw.Close();
-                        //    }
-
-                        //    Services.Pdf.SavePDF(comprobante.com_empresa, comprobante.com_numero, HttpContext.Current.Server.MapPath("../pdf"), false, "");
-                        //    CorreoComprobante(comprobante.com_empresa, comprobante.com_numero, true);
-                        //}
-                        //else
-                        //{
-                        //    CorreoErrorComprobante(comprobante.com_empresa, comprobante.com_numero);
-                        //}
+                        if (comprobante.com_estado == (int)Enums.EstadoComprobante.AUTORIZADO)
+                        {
+                            CorreoComprobanteAsync(comprobante, comprobante.crea_usr, true);
+                        }
                     }
 
 
@@ -406,6 +500,129 @@ namespace Packages
                 ExceptionHandling.Log.AddLog("ERROR " + clave);
                 ExceptionHandling.Log.AddLog(ex);
             }
+        }
+
+        #endregion
+
+        #region Metodos Resultado Delegado Asapp
+
+        public enum ResultadoAsappStatus { Aplicado, YaProcesado, NoEncontrado, EmpresaNoDelegada, ConflictoEstado, DatosInvalidos }
+
+        public class ResultadoAsappOutcome
+        {
+            public ResultadoAsappStatus Status { get; set; }
+            public string Detalle { get; set; }
+            public int? EstadoFinal { get; set; }
+        }
+
+        public static ResultadoAsappOutcome ProcesarResultadoDelegado(string claveAcceso, string resultado, string numeroAutorizacion, string fechaAutorizacion, string xmlAutorizadoBase64, string mensaje)
+        {
+            var outcome = new ResultadoAsappOutcome();
+
+            List<Comprobante> lst = ComprobanteBLL.GetAll(new WhereParams("com_numero={0}", claveAcceso), "");
+            if (lst.Count == 0)
+            {
+                outcome.Status = ResultadoAsappStatus.NoEncontrado;
+                outcome.Detalle = "Comprobante no encontrado: " + claveAcceso;
+                return outcome;
+            }
+            Comprobante comprobante = lst[0];
+
+            Empresa empresa = EmpresaBLL.GetByPK(new Empresa { emp_codigo = comprobante.com_empresa, emp_codigo_key = comprobante.com_empresa });
+            if (!AsappClient.IsDelegado(empresa))
+            {
+                outcome.Status = ResultadoAsappStatus.EmpresaNoDelegada;
+                outcome.Detalle = "La empresa no esta en modo delegado";
+                return outcome;
+            }
+
+            int estadoDestino;
+            if (resultado == "AUTORIZADO")
+                estadoDestino = (int)Enums.EstadoComprobante.AUTORIZADO;
+            else if (resultado == "NOAUTORIZADO")
+                estadoDestino = (int)Enums.EstadoComprobante.NOAUTORIZADO;
+            else if (resultado == "DEVUELTO")
+                estadoDestino = (int)Enums.EstadoComprobante.DEVUELTO;
+            else
+            {
+                outcome.Status = ResultadoAsappStatus.DatosInvalidos;
+                outcome.Detalle = "Resultado invalido: " + resultado;
+                return outcome;
+            }
+
+            if (comprobante.com_estado == estadoDestino
+                && (estadoDestino != (int)Enums.EstadoComprobante.AUTORIZADO || comprobante.com_autorizacion == numeroAutorizacion))
+            {
+                outcome.Status = ResultadoAsappStatus.YaProcesado;
+                outcome.EstadoFinal = comprobante.com_estado;
+                return outcome;
+            }
+
+            int[] estadosTerminales = {
+                (int)Enums.EstadoComprobante.AUTORIZADO, (int)Enums.EstadoComprobante.NOAUTORIZADO,
+                (int)Enums.EstadoComprobante.DEVUELTO, (int)Enums.EstadoComprobante.ANULADO, (int)Enums.EstadoComprobante.ELIMINADO
+            };
+            if (comprobante.com_estado.HasValue && comprobante.com_estado != estadoDestino && Array.IndexOf(estadosTerminales, comprobante.com_estado.Value) >= 0)
+            {
+                outcome.Status = ResultadoAsappStatus.ConflictoEstado;
+                outcome.Detalle = "El comprobante ya esta en estado " + Enums.GetEstadoComprobante(comprobante.com_estado) + ", no se puede aplicar " + resultado;
+                outcome.EstadoFinal = comprobante.com_estado;
+                return outcome;
+            }
+
+            Archivo arc = ArchivoBLL.GetByPK(new Archivo { arc_empresa = comprobante.com_empresa, arc_empresa_key = comprobante.com_empresa, arc_numero = comprobante.com_numero, arc_numero_key = comprobante.com_numero });
+
+            if (estadoDestino == (int)Enums.EstadoComprobante.AUTORIZADO)
+            {
+                if (string.IsNullOrEmpty(numeroAutorizacion) || string.IsNullOrEmpty(xmlAutorizadoBase64))
+                {
+                    outcome.Status = ResultadoAsappStatus.DatosInvalidos;
+                    outcome.Detalle = "numeroAutorizacion y xmlAutorizadoBase64 son requeridos para AUTORIZADO";
+                    return outcome;
+                }
+
+                string xmlAutorizado;
+                try
+                {
+                    xmlAutorizado = Encoding.UTF8.GetString(Convert.FromBase64String(xmlAutorizadoBase64));
+                    XmlDocument docValida = new XmlDocument();
+                    docValida.LoadXml(xmlAutorizado);
+                }
+                catch (Exception ex)
+                {
+                    outcome.Status = ResultadoAsappStatus.DatosInvalidos;
+                    outcome.Detalle = "xmlAutorizadoBase64 invalido: " + ex.Message;
+                    return outcome;
+                }
+
+                comprobante.com_autorizacion = numeroAutorizacion;
+                comprobante.com_fechaautorizacion = fechaAutorizacion;
+                comprobante.com_estado = (int)Enums.EstadoComprobante.AUTORIZADO;
+                comprobante.com_fecharespuesta = DateTime.Now;
+                comprobante.com_numero_key = comprobante.com_numero;
+                comprobante.com_empresa_key = comprobante.com_empresa;
+                ComprobanteBLL.Update(comprobante);
+
+                arc.arc_xmlrespuesta = xmlAutorizado;
+                arc.arc_empresa_key = arc.arc_empresa;
+                arc.arc_numero_key = arc.arc_numero;
+                ArchivoBLL.Update(arc);
+
+                CorreoComprobanteAsync(comprobante, comprobante.crea_usr, true);
+            }
+            else
+            {
+                comprobante.com_mensaje = mensaje ?? "";
+                comprobante.com_estado = estadoDestino;
+                comprobante.com_fecharespuesta = DateTime.Now;
+                comprobante.com_numero_key = comprobante.com_numero;
+                comprobante.com_empresa_key = comprobante.com_empresa;
+                ComprobanteBLL.Update(comprobante);
+            }
+
+            outcome.Status = ResultadoAsappStatus.Aplicado;
+            outcome.EstadoFinal = comprobante.com_estado;
+            return outcome;
         }
 
         #endregion
@@ -516,14 +733,10 @@ namespace Packages
 
 
                 if (!File.Exists(pathxml))//RECREA EL XML
-                {                    
+                {
                     CrearArchivoXML(comprobante.com_empresa, comprobante.com_numero);
                 }
-                if (!File.Exists(pathride)) //RECREA EL RIDE
-                {                    
-                    comprobante = XmlReader.CargarFactura(comprobante);
-                    pathride = Services.Pdf.CreatePDF(comprobante);                 
-                }
+                pathride = Services.Pdf.CreatePDF(comprobante);
 
 
 
@@ -708,13 +921,19 @@ namespace Packages
             Archivo archivo = ArchivoBLL.GetByPK(new Archivo { arc_numero = numero, arc_numero_key = numero, arc_empresa = empresa, arc_empresa_key = empresa });
             string path = Constantes.GetParameter("pathfiles");
             string pathxml = path + "\\temp\\" + numero + "_" + empresa + ".xml";
+
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.LoadXml(archivo.arc_xml);
+            General.AsegurarCampoAdicionalRucProveedor(xmldoc);
+            string xmlCorregido = General.SerializarXml(xmldoc);
+
             if (File.Exists(pathxml))
                 File.Delete(pathxml);
-            // Create a file to write to. 
+            // Create a file to write to.
             using (StreamWriter sw = File.CreateText(pathxml))
             {
                 //sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-                sw.Write(archivo.arc_xml);
+                sw.Write(xmlCorregido);
                 sw.Flush();
                 sw.Close();
             }

@@ -59,8 +59,12 @@
     <Compile Include="CorreoBLL.cs" />
     <Compile Include="EmpresaBLL.cs" />
     <Compile Include="FormatoBLL.cs" />
+    <Compile Include="AsappLogBLL.cs" />
+    <Compile Include="AutomataEjecucionBLL.cs" />
+    <Compile Include="AutomataLogBLL.cs" />
     <Compile Include="ParametroBLL.cs" />
     <Compile Include="PerfilBLL.cs" />
+    <Compile Include="SriReglaMensajeBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioBLL.cs" />
     <Compile Include="UsuarioxempresaBLL.cs" />
