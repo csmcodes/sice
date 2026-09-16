@@ -112,7 +112,7 @@ namespace WebUI
             }
 
             Usuario usuario = UsuarioBLL.GetByPK(new Usuario { usr_id = xmlruccli.InnerText.Trim(), usr_id_key = xmlruccli.InnerText.Trim() });
-            if (usuario.crea_fecha.HasValue)//USUARIO EXISTE
+            if (!string.IsNullOrEmpty(usuario.usr_nombres))//USUARIO EXISTE (GetByPK no encontro nada devuelve el objeto de busqueda tal cual, sin usr_nombres)
             {
                 usuario.usr_id = xmlruccli.InnerText.Trim();
                 usuario.usr_id_key = xmlruccli.InnerText.Trim();
