@@ -111,8 +111,11 @@ namespace WebUI
                 }
             }
 
-            Usuario usuario = UsuarioBLL.GetByPK(new Usuario { usr_id = xmlruccli.InnerText.Trim(), usr_id_key = xmlruccli.InnerText.Trim() });
-            if (!string.IsNullOrEmpty(usuario.usr_nombres))//USUARIO EXISTE (GetByPK no encontro nada devuelve el objeto de busqueda tal cual, sin usr_nombres)
+            string usrId = xmlruccli.InnerText.Trim();
+            //La existencia se decide por el resultado de la consulta, no por el contenido de un campo (GetByPK devuelve el objeto de busqueda tal cual si no hay fila)
+            List<Usuario> existentes = UsuarioBLL.GetAll(new WhereParams("usr_id = {0}", usrId), "");
+            Usuario usuario = existentes.Count > 0 ? existentes[0] : new Usuario { usr_id = usrId, usr_id_key = usrId };
+            if (existentes.Count > 0)//USUARIO EXISTE
             {
                 usuario.usr_id = xmlruccli.InnerText.Trim();
                 usuario.usr_id_key = xmlruccli.InnerText.Trim();
